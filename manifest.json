@@ -1,0 +1,25 @@
+{
+   
+    "name":"Shortcut everything 2.0",
+    "version": "0.7.5",
+    "manifest_version": 3,
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["./build/content.js"]
+      }
+    ],
+    "action": {
+      "default_title": "Shortcut Everything",
+      "default_icon": "logo.png",
+      "default_popup": "./Html/popup.html"
+    },
+
+    "permissions": ["tabs", "storage"],
+
+    "web_accessible_resources": [{
+     "resources": ["common.js"],
+    "matches": ["<all_urls>"]
+    }]
+
+  }

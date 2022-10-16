@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>shortcut Everything popup</title>
+
+</head>
+
+<body>
+    <script src="../build/popup.js" charset="utf-8"></script>
+
+
+    <div style="width:400px;">
+        <div class="popup-content">
+
+            <div id="message" style="height: 50px;font-size: 12px;">
+
+            </div>
+
+            <label class="switch">
+                <input type="checkbox" id="dark-mode switch">
+                <span class="slider round"></span>
+            </label>
+
+            <button id="new_shortcut" style="font-weight:600;">Add</button>
+            <button id="on/off button local" style="font-weight:600;"> on/off</button>
+            <button id="settings button" style="font-weight:600;"> settings </button>
+
+            <div class="separator"></div>
+
+            <h2> Current Key Sequence </h2>
+            <input id="new keySequence input field" style="width: 60%;" value="" disabled />
+
+            <div class="separator"></div>
+
+            <h4>Create package for this page</h4>
+            <button id="create package button" style="font-weight:300;">Create package</button>
+
+            <input type="text" value="" placeholder="your package txt will be here" id="package create field">
+            <button id="copy package">Copy text</button>
+
+            <div id="fileContents" info="i guess it is some trash div"></div>
+
+            <div class="separator"></div>
+
+            <h4>Upload package</h4>
+
+            <form accept-charset="utf-8">
+                <input type="file" id="package input field" name="package">
+                <input type="submit" , id="package input submit button">
+            </form>
+
+            <div class="separator"></div>
+
+            <h4> Your shortucs on this page: </h4>
+            <div id="shortcuts collection">
+
+            </div>
+
+            <div class="separator"></div>
+
+            <button id="reset storage" style="width: 45%;">reset storage</button>
+            <button id="show shortcuts raw" style="width: 45%;">show shortcuts raw</button>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
