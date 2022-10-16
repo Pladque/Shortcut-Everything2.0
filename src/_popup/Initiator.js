@@ -26,7 +26,6 @@ export class Initiator{
         //     colls[i].addEventListener('click', onclick_loadCollapsableAction, false);
         // }
 
-        alert("intializazed")
 
     }
 }

@@ -1,0 +1,9 @@
+@[old func name]
+    tag when name of func was changed
+@TODO
+
+@change
+    tag when changed something in code logic
+
+@finishedHere
+    mark point where finished last time

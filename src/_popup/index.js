@@ -18,33 +18,3 @@ listenersManager.listen();
 keyboardReader.listen();
 
 
-
-
-// class test{
-
-//     method1(){
-//         this.method2();
-//     }
-
-//     method2(){
-//         alert("Hello from method 2")
-//     }
-// }
-
-// class abovetest{
-//     constructor(test){
-//         this.test = test;
-//     }
-
-//     method0(){
-//         this.test.method1();
-//     }
-// }
-
-// const t = new test();
-// const aboveTest = new abovetest(t);
-
-
-// aboveTest.method0();
-
-

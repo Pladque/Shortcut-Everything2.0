@@ -1,0 +1,11 @@
+
+
+
+class IFeature{
+
+    // function called when gets called by popup
+    onCallResponse(data){
+        
+    }
+
+}
