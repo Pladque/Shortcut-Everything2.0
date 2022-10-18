@@ -1,6 +1,8 @@
 const {CREATE_NEW_SHOWRTCUT_MSG, REQUEST_SEPARATOR} = require("../../common/PopupAndContentCommunication/Orders")
 const {readActivator} = require("./ReadActivator")
 const {HtmlElementParser} = require("../common/HtmlElementParser")
+const {UrlParser} = require("../../common/UrlParser")
+const {storage} = require("../../common/Storage")
 
 // @TODO - tutaj musze te funkcje podorabiac iwgl pozmieniac na bardziej obiektowe
 export class NewShortcutFeature{
@@ -30,73 +32,84 @@ export class NewShortcutFeature{
             shortcut = this.shortcutMem
             readActivator.ReadAcces = true;
 
-            alert(shortcut)
             
             const htmlElementParser = new HtmlElementParser();
             const elementPropertiesWithOrginal = await htmlElementParser.parseElement(e).catch(e => {
                 console.log(e);
             });
 
-            // @finishedHere
             alert(JSON.stringify(elementPropertiesWithOrginal))
             
-            // const site = getSiteUrlIdentifier();
-
-            // let presentShortcuts = null
-
-            // try {
-            // presentShortcuts = await readLocalStorage(site).catch(e => {
-            //     console.log(e);
-            // });
-            // } catch (error) {
+            const urlParser = new UrlParser();
+            const site = urlParser.getSiteUrlIdentifier();
             
-            // }
+            let presentShortcuts = null
+            try {
+                presentShortcuts = await storage.readLocalStorage(site).catch(e => {
+                    console.log(e);
+                });
+            } catch (error) {
+                
+            }
+            // alert(JSON.stringify(presentShortcuts))
+            const description = "No description provided"
 
-            // const description = "No description provided"
+            const shortcutInfoObj = {
+                "shortcut": shortcut, 
+                "attributes": elementPropertiesWithOrginal, 
+                "desc": description, 
+                "options": {
+                    "enabled": true, 
+                    "skipableAttribiutes":    Object.keys(JSON.parse(elementPropertiesWithOrginal.targetAttributes)),
+                    "maxAmonutOfAttribiutesToSkip": 0,
+                    "hasToBeVisible": false,
+                }
+            }
+            if(presentShortcuts === null || presentShortcuts === undefined){
+                await storage.saveToLocalStorage(site,  {"data": [ shortcutInfoObj ], "info": {"enabled": true} })
+                .catch(e => {
+                    console.log(e);
+                });
 
-            // const shortcutInfoObj = {
-            // "shortcut": shortcut, 
-            // "attributes": elementPropertiesWithOrginal, 
-            // "desc": description, 
-            // "options": {
-            //     "enabled": true, 
-            //     "skipableAttribiutes":    Object.keys(JSON.parse(elementPropertiesWithOrginal.targetAttributes)),
-            //     "maxAmonutOfAttribiutesToSkip": 0,
-            //     "hasToBeVisible": false,
-            // }
-            // }
+            }else{
+                let shortcutrsArr = presentShortcuts["data"]
+                
+                let indexOfShortcut = this._getIndexOfShortcut(shortcutrsArr, shortcut)
+                
+                if(indexOfShortcut === -1){  // add new shortcut
+                    shortcutrsArr.push(shortcutInfoObj) 
+                }else{  // override shortcut
+                    shortcutrsArr[indexOfShortcut] = shortcutInfoObj
+                }
 
-            // if(presentShortcuts === null || presentShortcuts === undefined){
-            // await saveToLocalStorage(site,  {"data": [ shortcutInfoObj ], "info": {"enabled": true} })
-            //     .catch(e => {
-            //     console.log(e);
-            //     });
+                await storage.saveToLocalStorage(site,  {"data": shortcutrsArr, info: presentShortcuts["info"]}).catch(e => {
+                    console.log(e);
+                    });
+            }
 
-            // }else{
-            // shortcutrsArr = presentShortcuts["data"]
-            
-            // let indexOfShortcut = getIndexOfShortcut(shortcutrsArr, shortcut)
-            
-            // if(indexOfShortcut === -1){  // add new shortcut
-            //     shortcutrsArr.push(shortcutInfoObj) 
-            // }else{  // override shortcut
-            //     shortcutrsArr[indexOfShortcut] = shortcutInfoObj
-            // }
+            let  presentShortcutsDEBUG = await storage.readLocalStorage(site).catch(e => {
+                    console.log(e);
+                });
 
-            // await saveToLocalStorage(site,  {"data": shortcutrsArr, info: presentShortcuts["info"]}).catch(e => {
-            //     console.log(e);
-            //     });
-            // }
+            alert("current shortcuts: " + JSON.stringify(presentShortcutsDEBUG))
 
             shortcut = "";
         }, true)
 
     }
 
+    _getIndexOfShortcut(shortcutrsArr, shortcut){
+        let index = -1;
+        for(let i =0; i< shortcutrsArr.length; i++){
+            if(shortcutrsArr[i]["shortcut"] === shortcut){
+            index = i;
+            break;
+            }
+        }
+
+        return index
+    }
+
+
 }
 
-
-
-
-///////
-// global value to save somewhere entered shortcut

@@ -3,10 +3,12 @@ const NOT_WORKING_TAGS = ["svg", "ellipse", "path"]
 const TAGS_TO_SELECT = ["input"]
 const SEARCH_FULL = true
 
+const autoCheckInnerTextChange = true;
 
 export{
     ATTRIBIUTES_TO_SKIP,
     NOT_WORKING_TAGS,
     TAGS_TO_SELECT,
-    SEARCH_FULL
+    SEARCH_FULL,
+    autoCheckInnerTextChange
 }

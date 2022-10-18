@@ -4,7 +4,8 @@
 // #1 Singleton
 class ReadActivator {
   constructor() {
-   this.ReadAcces = false;
+   this.ReadAcces = true;
+   this.isExtensionEnabled = true;
   }
 }
 

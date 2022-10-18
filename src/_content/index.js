@@ -1,17 +1,28 @@
 const {MessageMatcher} = require("./MessageMatcher");
-const {CREATE_NEW_SHOWRTCUT_MSG} = require("../common/PopupAndContentCommunication/Orders");
-const {NewShortcutFeature} = require("../features/newShortcutFeature/newShortcut");
+import {messageResponse} from "./OnCallResponses";
+const {shortcutsListener} = require("./ShortcutsListener")
+const {Initializator} = require("./Initializator")
+const {ShortcutExecutor} = require("../ShortcutExecutors/ShortcutExecutor")
+const {SearchAlghorythm} = require("..//ShortcutExecutors/SearchAlghorythm")
 
-// @TODO move it to new class
+const searchAlghorythm = new SearchAlghorythm();
+const shortcutExecutor = new ShortcutExecutor(searchAlghorythm, {});
+
+shortcutsListener.start();
+
+const initializator = new Initializator(shortcutExecutor);
+initializator.init();
+
+// @TODO move it to new class (sth like CallListener)
+const messageMatcher = new MessageMatcher();
 chrome.runtime.onMessage.addListener(async function(request){
-    const messageMatcher = new MessageMatcher();
-
-    if(messageMatcher.matchRequest(request, CREATE_NEW_SHOWRTCUT_MSG)){
-        newShortcutFeature = new NewShortcutFeature();
-        newShortcutFeature.onCallResponse({
-            request
-        })
+    for(let i = 0; i < messageResponse.length; i++){
+        if(messageMatcher.matchRequest(request, messageResponse[i].msg)){
+            messageResponse[i].actionObject.onCallResponse({
+                request
+            })
+        }
     }
 })
-
+    
 
