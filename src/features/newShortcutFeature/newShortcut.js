@@ -1,5 +1,5 @@
 const {CREATE_NEW_SHOWRTCUT_MSG, REQUEST_SEPARATOR} = require("../../common/PopupAndContentCommunication/Orders")
-const {readActivator} = require("./ReadActivator")
+const {readActivator} = require("../common/ReadActivator")
 const {HtmlElementParser} = require("../common/HtmlElementParser")
 const {UrlParser} = require("../../common/UrlParser")
 const {storage} = require("../../common/Storage")

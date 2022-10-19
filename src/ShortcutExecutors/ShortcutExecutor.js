@@ -1,7 +1,7 @@
 const {autoCheckInnerTextChange} = require("../configVariables")
 const {storage} = require("../common/Storage")
 const {TAGS_TO_SELECT, SEARCH_FULL} = require("../configVariables")
-const {readActivator} = require("../features/newShortcutFeature/ReadActivator")
+const {readActivator} = require("../features/common/ReadActivator")
 const {UrlParser} = require("../common/UrlParser")
 
 export class ShortcutExecutor{

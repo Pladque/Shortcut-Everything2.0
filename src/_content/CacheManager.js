@@ -1,7 +1,7 @@
 const {storage} = require("../common/Storage")
 const {UrlParser} = require("../common/UrlParser")
 const {shortcutsListener} = require("../_content/ShortcutsListener")
-const {readActivator} = require("../features/newShortcutFeature/ReadActivator")
+const {readActivator} = require("../features/common/ReadActivator")
 
 // powinna miec funckje typu update cache i to chyba tyle
 // niech sam algos wyszukujacy bedzie przekazywany jakims obiektem z funkcja o konkretnej nazwie
