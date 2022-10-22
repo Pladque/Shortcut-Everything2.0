@@ -2,7 +2,11 @@ const {NOT_WORKING_TAGS, ATTRIBIUTES_TO_SKIP} = require("../../configVariables")
 
 export class HtmlElementParser{
 
-    // @getButtonInfo
+    // @DESC: Gets data from object (element) user clicked on 
+    // @INPUT: event
+    // @RETURNS: all data from event.target but "href"
+    // @TODO: make sth like "attributesToSkip" and put href inside, so in the future
+    //        we were able to exclude more attributes easly     
     async parseElement(e){
         e = e || window.event;
         var target = e.target || e.srcElement

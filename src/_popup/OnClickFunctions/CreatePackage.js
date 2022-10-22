@@ -2,8 +2,9 @@ const {storage} = require("../../common/Storage")
 const {UrlParser} = require("../../common/UrlParser")
 
 
-export function createPackageClickAction(){
-     chrome.tabs.query({currentWindow: true, active: true}, async function (tabs) {
+export class PackageCreatorButtonAction{
+    onClickAction(data){
+        chrome.tabs.query({currentWindow: true, active: true}, async function (tabs) {
             var currentTab = tabs[0]; 
 
             // @TODO przeniesc to do klasy Parsera elegancko
@@ -11,7 +12,7 @@ export function createPackageClickAction(){
 
             const parser = new UrlParser();
             const parsedUrl = parser._parseURL(url);
-            const data = await storage.readLocalStorage(parsedUrl)
+            const data = await storage.readLocalStorage(await parser.getSiteUrlIdentifierInPopup())
 
             let packageJSON = {}
 
@@ -23,4 +24,5 @@ export function createPackageClickAction(){
             let pacakgeField = document.getElementById("package create field");
             pacakgeField.setAttribute("value", packageStr)
         });
+    }
 }

@@ -1,14 +1,27 @@
 
 // @TODO tu chyuba ten wzorzec co oddziela logike biznesowa od czegos tam zastosowac
-
 export class UrlParser{
     getSiteUrlIdentifier(){
         const url = this._getURL();
-        return this._parseURL(url)
+        return this._parseMethod({url: url})
+    }
+    
+    async getSiteUrlIdentifierInPopup(){
+        const url = await this._getURLInPopup();
+        return this._parseMethod({url: url})
     }
 
     _getURL(){
         return window.location.href
+    }
+
+    async _getURLInPopup(){
+        let currentTab = await this._getCurrentTab();
+        return JSON.stringify(currentTab.url);
+    }
+    
+    _parseMethod(data){
+        return this._parseURL(data.url);
     }
 
     _parseURL(url){
@@ -18,6 +31,10 @@ export class UrlParser{
         return parsed
     }
 
-
+    async _getCurrentTab() {
+        let queryOptions = { active: true, lastFocusedWindow: true };
+        let [tab] = await chrome.tabs.query(queryOptions);
+        return tab;
+    }
 
 }

@@ -1,5 +1,8 @@
+const {darkModeManager} = require("../Frontend/DarkModeManager")
 
 
-export function darkModeOnClickAction(){
-    alert("darkModeOnClickAction");
+export class DarkModeButtonAction{
+    onClickAction(data){
+        darkModeManager.switchMode();
+    }
 }

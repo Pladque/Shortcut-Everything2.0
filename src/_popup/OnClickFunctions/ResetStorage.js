@@ -1,5 +1,9 @@
+const {storage} = require("../../common/Storage")
 
 
-export function resetStorageOnClickAction(){
-    alert("resetStorageOnClickAction");
+
+export class StorageReseterButtonAction{
+    onClickAction(data){
+        storage.clearStorage();
+    }
 }

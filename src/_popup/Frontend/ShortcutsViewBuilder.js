@@ -10,10 +10,13 @@ export class ShortcutsViewBuilder{
     }
 
     async createShortcutsViewBoard(tabs){
+        this._build(tabs);
+    }
+
+    async _build(tabs){
         var currentTab = tabs[0]; 
 
-        const url = JSON.stringify(currentTab.url)
-        const data = await this.storage.readLocalStorage(this.parser._parseURL(url)).catch(e => {
+        const data = await this.storage.readLocalStorage(await this.parser.getSiteUrlIdentifierInPopup()).catch(e => {
         });
 
         if(data === undefined || data === null){
@@ -24,11 +27,8 @@ export class ShortcutsViewBuilder{
 
         for(let i = 0; i< data.data.length; i++){
             node.appendChild(this.titleCreator.getTitle(data.data[i]))
-            node.appendChild(this.rowCreator.getRow(data.data[i]))
+            node.appendChild(this.rowCreator.getRow({shortcutData: data.data[i]}))
         }
     }
-
-
-
 
 }

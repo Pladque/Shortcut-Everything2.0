@@ -38,8 +38,6 @@ export class NewShortcutFeature{
                 console.log(e);
             });
 
-            alert(JSON.stringify(elementPropertiesWithOrginal))
-            
             const urlParser = new UrlParser();
             const site = urlParser.getSiteUrlIdentifier();
             
@@ -51,7 +49,6 @@ export class NewShortcutFeature{
             } catch (error) {
                 
             }
-            // alert(JSON.stringify(presentShortcuts))
             const description = "No description provided"
 
             const shortcutInfoObj = {
@@ -91,7 +88,7 @@ export class NewShortcutFeature{
                     console.log(e);
                 });
 
-            alert("current shortcuts: " + JSON.stringify(presentShortcutsDEBUG))
+            // alert("current shortcuts: " + JSON.stringify(presentShortcutsDEBUG))
 
             shortcut = "";
         }, true)

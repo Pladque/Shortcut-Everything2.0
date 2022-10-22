@@ -1,4 +1,5 @@
 
+
 export class Initiator{
 
     constructor(frontendViewBuilder, darkModeManager, collapsableElemetnsEventsAdder){
@@ -12,6 +13,21 @@ export class Initiator{
     }
 
     async _init(event){
+        // darkmodeEnabled = await getDarkModeSettings();
+        // await manageDarkMode();
+
+        let darkmodeEnabled = await this.darkModeManager.readDarkModeSettings();
+        await this.darkModeManager.manageDarkMode(darkmodeEnabled);
+
+        // try {
+        //     var query = { active: true, currentWindow: true };
+        //     chrome.tabs.query(query, _createShortcutsBoard);
+        // } catch (err) {
+
+        // }
+
+
+
         try {
             var query = { active: true, currentWindow: true };
             await chrome.tabs.query(query,(tabs) => {
@@ -21,13 +37,6 @@ export class Initiator{
 
         }
 
-        // //without this collapsableElemetnsEventsAdder doesnt see any buttons..
-        await new Promise(r => setTimeout(r, 20));
-
-        let darkmodeEnabled = await this.darkModeManager.readDarkModeSettings();
-        await this.darkModeManager.manageDarkMode(darkmodeEnabled);
-
-        this.collapsableElemetnsEventsAdder.addActionTo("collapsible", "collapsableEventsOnClickAction");
     }
 
 }

@@ -26,6 +26,7 @@ export class ShortcutExecutor{
         for(let i = 0; i < data.data.length; i++){
             shortCutInfo[data.data[i].shortcut] = () => {
                 if(readActivator.isExtensionEnabled && data.data[i].options.enabled){
+                    
                     const savedShortCut =  data.data[i];
                     
                     if(savedShortCut && readActivator.ReadAcces){

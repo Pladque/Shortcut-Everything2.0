@@ -7,14 +7,21 @@ const {ShortcutsViewBuilder} = require("./Frontend/ShortcutsViewBuilder")
 const {ShortcutsViewRowCreator} = require("./Frontend/ShortcutsViewRowCreator")
 const {TitleCreator} = require("./Frontend/TitleCreator");
 const { UrlParser } = require("../common/UrlParser");
+const {darkModeManager} = require("./Frontend/DarkModeManager")
+const {EventsAdder} = require("./Frontend/EventsAdder")
+const {ActionsManager} = require("./Frontend/ActionManager")
+const {idActionsListenersPairs} = require("./IDActionButtonListenersPairs")
 
 // Init frontend
+const eventsAdder = new EventsAdder(new ActionsManager());
 const titleCreator = new TitleCreator();
 const shortcutsViewRowCreator = new ShortcutsViewRowCreator();
 const parser = new UrlParser();
 const shortcutsViewBuilder = new ShortcutsViewBuilder(titleCreator, shortcutsViewRowCreator, storage, parser);
 
-const initiator = new Initiator(shortcutsViewBuilder);
+darkModeManager.setStorage(storage);
+
+const initiator = new Initiator(shortcutsViewBuilder, darkModeManager, eventsAdder);
 const listenersManager = new ListenersManager();
 const keyboardReader = new KeyboardReader(onKeyDownAction)
 
@@ -24,7 +31,7 @@ const keyboardReader = new KeyboardReader(onKeyDownAction)
 initiator.init();
 
 // Adding Listeners
-listenersManager.listen();
+listenersManager.listen(idActionsListenersPairs);
 keyboardReader.listen();
 
 
