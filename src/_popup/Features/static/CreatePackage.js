@@ -1,9 +1,21 @@
-const {storage} = require("../../common/Storage")
-const {UrlParser} = require("../../common/UrlParser")
+import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+
+const {storage} = require("../../../common/Storage")
+const {UrlParser} = require("../../../common/UrlParser")
 
 
 export class PackageCreatorButtonAction{
-    onClickAction(data){
+
+    constructor(handler){
+        this.handler = handler
+    }
+
+    async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
+    }
+    
+    @addSitePropertyDecorator
+    async runFeature(data){
         chrome.tabs.query({currentWindow: true, active: true}, async function (tabs) {
             var currentTab = tabs[0]; 
 
@@ -12,7 +24,7 @@ export class PackageCreatorButtonAction{
 
             const parser = new UrlParser();
             const parsedUrl = parser._parseURL(url);
-            const data = await storage.readLocalStorage(await parser.getSiteUrlIdentifierInPopup())
+            const data = await storage.readLocalStorage(data.site)
 
             let packageJSON = {}
 
@@ -24,5 +36,9 @@ export class PackageCreatorButtonAction{
             let pacakgeField = document.getElementById("package create field");
             pacakgeField.setAttribute("value", packageStr)
         });
+
+        return data;
     }
+
+    
 }

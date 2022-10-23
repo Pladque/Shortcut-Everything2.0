@@ -1,20 +1,31 @@
+import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+
 const {UrlParser} = require("../../../common/UrlParser")
 const {storage} = require("../../../common/Storage")
 
 
 export class DeleteShortcut{
 
-    constructor(site){
+    constructor(handler){
+        this.handler = handler
+    }
+
+    setSite(site){
         this.site = site;
     }
 
-
-    async onClickAction (data) {
-        await this._deleteShortcut(data.shortcut).catch(e => {console.log(e);});
+    @addSitePropertyDecorator
+    async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
     }
 
-    async _deleteShortcut(shortcutToDelete){
-        const site = this.site;
+
+    async runFeature (data) {
+        await this._deleteShortcut(data.shortcut, data.site).catch(e => {console.log(e);});
+        return data;
+    }
+
+    async _deleteShortcut(shortcutToDelete, site){
         let presentShortcuts = null
 
         try {

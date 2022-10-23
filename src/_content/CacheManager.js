@@ -14,16 +14,25 @@ export class CacheManager{
     async updateCache(){
         try {
             const parser = new UrlParser();
-            const data = await storage.readLocalStorage(parser.getSiteUrlIdentifier())
-            const shortsCutInfo = this.searchAlghorythmObj.shortcutAction(data)
+            const data = await storage.readLocalStorage(await parser.getSiteUrlIdentifier())
             
+            // console.error("updated cache for: " + parser.getSiteUrlIdentifier())
+            
+            const shortsCutInfo = this.searchAlghorythmObj.shortcutAction(data)
+
+            console.error("obiekt do zaladowania: " + JSON.stringify(data))
+
+
             readActivator.isExtensionEnabled = data.info.enabled;
             
             await shortcutsListener.loadShortcuts(shortsCutInfo);
+            
         } catch (err) {
             const data = {"data": [], "info": {"enabled": true}}
             const parser = new UrlParser();
             await storage.saveToLocalStorage(parser.getSiteUrlIdentifier(), data)
+            const shortsCutInfo = this.searchAlghorythmObj.shortcutAction(data);
+            await shortcutsListener.loadShortcuts(shortsCutInfo);
         }
 
     }

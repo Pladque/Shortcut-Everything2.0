@@ -1,8 +1,19 @@
-const {storage} = require("../../common/Storage")
+import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+
+const {storage} = require("../../../common/Storage")
 
 
 export class PackageLoaderButtonAction{
-    onClickAction(data){
+
+    constructor(handler){
+        this.handler = handler
+    }
+
+    async onClickAction(data){
+         this.handler.run(await this.runFeature(data))
+    }
+    
+    async runFeature(data){
         let file = document.getElementById("package input field").files[0];
         if (file) {
             let reader = new FileReader();
@@ -11,15 +22,19 @@ export class PackageLoaderButtonAction{
             // alert(evt.target.result)
         
             const dataJSON = JSON.parse(evt.target.result);
-        
+
             await storage.saveToLocalStorage(dataJSON.site, (dataJSON.data))
         
+            //alert(JSON.stringify(await storage.readLocalStorage(dataJSON.site)))
+
             // showMessage("Shortcuts read succefully!")
-            }
-            reader.onerror = function (evt) {
-                // showMessage("error reading file")
+        }
+        reader.onerror = function (evt) {
+                console.error("error reading file")
             }
         
         }
+
+        return data;
     }
 }

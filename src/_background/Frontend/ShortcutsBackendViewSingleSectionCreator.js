@@ -1,9 +1,10 @@
-import { DeleteShortcut } from "../../_popup/OnClickFunctions/Generated/DeleteShortcut";
-import { EnableDisableShortcut } from "../../_popup/OnClickFunctions/Generated/EnableDisableShortcut";
+import { featuresFactory } from "../../_popup/Features/FeaturesFactory";
+import { DeleteShortcut } from "../../_popup/Features/Generated/DeleteShortcut";
+import { EnableDisableShortcut } from "../../_popup/Features/Generated/EnableDisableShortcut";
 import { ConsiderShortcutInnerText } from "../Features/Generated/ConsiderShortcutInnerText";
 import { UpdateShortcutInnerText} from "../Features/Generated/UpdateShortcutInnerText";
 import { UpdateShortcutSkippableAttributes } from "../Features/Generated/UpdateShortcutSkippableAttributes";
-const {UpdateShortcutDescription} = require("../../_popup/OnClickFunctions/Generated/UpdateShortcutDescription")
+const {UpdateShortcutDescription} = require("../../_popup/Features/Generated/UpdateShortcutDescription")
 
 
 export class ShortcutBackendViewSingleSectionCreator{
@@ -95,7 +96,9 @@ export class ShortcutBackendViewSingleSectionCreator{
 
         enableButton.addEventListener('click', function() {
             const currState = enableButton.getAttribute("shortcut-enabled");
-            let enableDisableShortcut = new EnableDisableShortcut(data.site);
+
+            let enableDisableShortcut = featuresFactory.createSingleShortcutEnablerFeature()
+            enableDisableShortcut.setSite(data.site);
 
             if(currState === "true"){
                 enableDisableShortcut.onClickAction({
@@ -115,7 +118,9 @@ export class ShortcutBackendViewSingleSectionCreator{
         }, false);
 
         deleteButton.addEventListener('click', async () => {
-            let shortcutEraser = new DeleteShortcut(data.site);
+            let shortcutEraser = featuresFactory.createDeleteShortcutFeature();
+            shortcutEraser.setSite(data.site);
+
             shortcutEraser.onClickAction( {shortcut: data.shortcutData.shortcut})
 
         }, false);
@@ -134,7 +139,8 @@ export class ShortcutBackendViewSingleSectionCreator{
 
         descSubmitButton.addEventListener('click', function() {
             const descInputField = document.getElementById("shortcut desc " + data.shortcutData.shortcut)
-            const descUpdater = new UpdateShortcutDescription(data.site);
+            const descUpdater = featuresFactory.createUpdateShortcutDescriptionFeature();
+            descUpdater.setSite(data.site);
             descUpdater.onClickAction( {shortcut: data.shortcutData.shortcut, desc: descInputField.value } )
         }, false);
 

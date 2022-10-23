@@ -1,6 +1,6 @@
 const {BackendTitleCreator} = require("./BackendTitleCreator")
 const {STORAGE_RESERVED_NAMES_PREFIX} = require("../../common/PopupAndContentCommunication/Orders")
-const {ExtensionEnablerButtonAction} = require("../../_popup/OnClickFunctions/OnOffLocal")
+const {ExtensionEnablerButtonAction} = require("../../_popup/Features/static/OnOffLocal")
 
 const {UrlParser} = require("../../common/UrlParser")
 const {storage} = require("../../common/Storage")

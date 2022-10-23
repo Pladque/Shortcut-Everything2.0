@@ -23,15 +23,25 @@ const {ShortcutUpdater} = require("../../../common/ShortcutUpdater")
 
 // @TODO zmienic nazwe zebyu nie bylo "popup feature" xd
 class UpdateSequencePopupFeature{
-    constructor(){
+
+    constructor(handler){
+        this.handler = handler
         this.oldShortcut = "";
     }
 
-    onClickAction(data){
+    setSite(site){}
+
+    async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
+    }
+
+    async runFeature(data){
         // showMessage("insert new Key sequence, then press ENTER, if such a sequence already exists, it will be overwritten")
   
         this.oldShortcut = data.shortcut;
         inputStateManager.changeState(inputStateManager.getStates().update)
+
+        return data;
     }
 
 

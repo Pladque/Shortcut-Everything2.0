@@ -10,3 +10,5 @@ const initiator = new Initiator(shortcutSectionCreator, darkModeManager, {addAct
 
 initiator.init();
 
+// @TODO - dodaj listenery -- nie dziala np tyryb ciemny na settings
+

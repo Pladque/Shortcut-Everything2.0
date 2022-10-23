@@ -1,7 +1,16 @@
 
 
 export class PackageCopyButtonAction{
-  onClickAction(data){
+
+  constructor(handler){
+        this.handler = handler
+  }
+
+  async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
+  }
+    
+  async runFeature(data){
     let pacakgeField = document.getElementById("package create field");
     
     pacakgeField.select();
@@ -9,5 +18,7 @@ export class PackageCopyButtonAction{
     
     navigator.clipboard.writeText(pacakgeField.value);
     // showMessage("Copied the package!")
+
+    return data;
   }
 }
