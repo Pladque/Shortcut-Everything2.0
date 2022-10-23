@@ -2,8 +2,9 @@ const {ShortcutUpdater} = require("../../../common/ShortcutUpdater")
 
 export class ChangeShortcutIndex{
 
-    constructor(site){
+    constructor(site, next = null){
         this.site = site;
+        this.next = next;
     }
 
 

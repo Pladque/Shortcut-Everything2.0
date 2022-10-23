@@ -1,9 +1,11 @@
+import { UrlParser } from "../../common/UrlParser";
+import { storage } from "../../common/Storage";
 
-const {messageTransporter} = require("../../common/PopupAndContentCommunication/MessageTransporter")
-const {GET_SHORTCUTS} = require("../../common/PopupAndContentCommunication/Orders")
 
 export class RawShortcutsPresenterButtonAction{
-    onClickAction(data){
-        messageTransporter.sendMessage(GET_SHORTCUTS);
+    async onClickAction(data){
+        const urlParser = new UrlParser();
+        const storageData = await storage.readLocalStorage(await urlParser.getSiteUrlIdentifierInPopup())
+        alert(JSON.stringify(storageData))
     }
 }
