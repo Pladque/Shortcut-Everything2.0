@@ -1,4 +1,5 @@
 // #1 Singleton
+// #4 Stan (korzystam w KeyboardAction - mozliwe ze bede musial zrobic KeyboardAction jako singleton i tam pameitac stan, poto zeby bylo to bedziej poprawne)
 class PopUpInputStateManager{
 
     constructor() {

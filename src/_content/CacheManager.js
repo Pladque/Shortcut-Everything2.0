@@ -14,16 +14,20 @@ export class CacheManager{
     async updateCache(){
         try {
             const parser = new UrlParser();
-            const data = await storage.readLocalStorage(parser.getSiteUrlIdentifier())
+            const data = await storage.readLocalStorage(await parser.getSiteUrlIdentifier())
+            
             const shortsCutInfo = this.searchAlghorythmObj.shortcutAction(data)
             
             readActivator.isExtensionEnabled = data.info.enabled;
             
             await shortcutsListener.loadShortcuts(shortsCutInfo);
+            
         } catch (err) {
             const data = {"data": [], "info": {"enabled": true}}
             const parser = new UrlParser();
             await storage.saveToLocalStorage(parser.getSiteUrlIdentifier(), data)
+            const shortsCutInfo = this.searchAlghorythmObj.shortcutAction(data);
+            await shortcutsListener.loadShortcuts(shortsCutInfo);
         }
 
     }

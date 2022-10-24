@@ -1,4 +1,5 @@
 import * as Order from "../common/PopupAndContentCommunication/Orders"
+const { UpdateCacheFeature }  = require( "../features/UpdateCacheFeature/UpdateCacheFeature");
 const {NewShortcutFeature} = require("../features/newShortcutFeature/newShortcut")
 const {ImproveShortcutFeature} = require("../features/improveShortcutFeature/ImproveShortcut")
 const { ExtensionEnableFeature } = require("../features/ExtensionEnableFeature/ExtensionEnableFeature")
@@ -15,6 +16,10 @@ export const messageResponse= [
     {
         msg: Order.ON_OFF_LOCAL_MSG,
         actionObject: new ExtensionEnableFeature(),
+    }, 
+    {
+        msg: Order.UPDATE_CACHE,
+        actionObject: new UpdateCacheFeature(),
     }, 
 ]
 

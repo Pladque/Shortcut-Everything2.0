@@ -1,50 +1,52 @@
-const {PackageCopyButtonAction} = require("./OnClickFunctions/CopyPackage")
-const {PackageCreatorButtonAction} = require("./OnClickFunctions/CreatePackage")
-const {NewShortcutButtonAction} = require("./OnClickFunctions/NewShortcut")
-const {ExtensionEnablerButtonAction} = require("./OnClickFunctions/OnOffLocal")
-const {PackageLoaderButtonAction} = require("./OnClickFunctions/PackageInput")
-const {SettingOpenerButtonAction} = require("./OnClickFunctions/Settings")
-const {StorageReseterButtonAction} = require("./OnClickFunctions/ResetStorage")
-const {RawShortcutsPresenterButtonAction} = require("./OnClickFunctions/ShowShortcutsRaw")
-const {DarkModeButtonAction} = require("./OnClickFunctions/DarkMode")
+// const {PackageCopyButtonAction} = require("./Features/static/CopyPackage")
+// const {PackageCreatorButtonAction} = require("./Features/static/CreatePackage")
+// const {NewShortcutButtonAction} = require("./Features/static/NewShortcut")
+// const {ExtensionEnablerButtonAction} = require("./Features/static/OnOffLocal")
+// const {PackageLoaderButtonAction} = require("./Features/static/PackageInput")
+// const {SettingOpenerButtonAction} = require("./Features/static/Settings")
+// const {StorageReseterButtonAction} = require("./Features/static/ResetStorage")
+// const {RawShortcutsPresenterButtonAction} = require("./Features/static/ShowShortcutsRaw")
+// const {DarkModeButtonAction} = require("./Features/static/DarkMode")
+
+const {featuresFactory} = require("../OnClickFeatures/FeaturesFactory")
 
 // only for buttons that are not generated 
 export const idActionsListenersPairs = [
     {
         elementId: "copy package",
-        actionObject: new PackageCopyButtonAction(),
+        actionObject: featuresFactory.createCopyPackageFeature()
     },
     {
         elementId: "create package button",
-        actionObject: new PackageCreatorButtonAction(),
+        actionObject:  featuresFactory.createCreatePackageFeature()
     },
     {
         elementId: "new_shortcut",
-        actionObject: new NewShortcutButtonAction(),
+        actionObject:  featuresFactory.createNewShortcutFeature()
     },
     {
         elementId: "on/off button local",
-        actionObject: new ExtensionEnablerButtonAction(),
+        actionObject:  featuresFactory.createEnablerFeature()
     },
     {
         elementId: "settings button",
-        actionObject: new SettingOpenerButtonAction(),
+        actionObject:  featuresFactory.createSettingFeature()
     },
     {
         elementId: "reset storage",
-        actionObject: new StorageReseterButtonAction(),
+        actionObject:  featuresFactory.createResetStorageFeature(),
     },
     {
         elementId: "package input submit button",
-        actionObject: new PackageLoaderButtonAction(),
+        actionObject:  featuresFactory.createPackageInputFeature()
     },
     {
         elementId: "dark-mode switch",
-        actionObject: new DarkModeButtonAction(),
+        actionObject: featuresFactory.createDarkModeFeature()
     },
     {
         elementId: "show shortcuts raw",
-        actionObject: new RawShortcutsPresenterButtonAction(),
+        actionObject: featuresFactory.createShowShortcutsRawFeature(),
     },
 
 

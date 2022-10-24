@@ -1,15 +1,23 @@
+const { featuresFactory } = require ("../../OnClickFeatures/FeaturesFactory");
+
 const {BackendTitleCreator} = require("./BackendTitleCreator")
 const {STORAGE_RESERVED_NAMES_PREFIX} = require("../../common/PopupAndContentCommunication/Orders")
-const {ExtensionEnablerButtonAction} = require("../../_popup/OnClickFunctions/OnOffLocal")
-
-const {UrlParser} = require("../../common/UrlParser")
-const {storage} = require("../../common/Storage")
-
-const {ShortcutBackendViewSingleSectionCreator} = require("./ShortcutsBackendViewSingleSectionCreator")
 
 // Creates shortcut nodes for page
 export class ShortcutSectionCreator{
+
+    constructor(sectionBuilder,titleCreator, storage){
+        this.sectionBuilder = sectionBuilder;
+        this.storage = storage;
+        this.titleCreator = titleCreator;
+    }
+
     createShortcutsViewBoard(_){
+        const storage = this.storage;
+        const titleCreator =  this.titleCreator;
+        const sectionBuilder = this.sectionBuilder;
+
+
         chrome.storage.local.get(null, async function(items) {
             var allKeys = Object.keys(items);
 
@@ -30,25 +38,23 @@ export class ShortcutSectionCreator{
                 await new Promise(r => setTimeout(r, 10));
 
                 if(data.data.length >= 1){
-                    let titleCreator = new BackendTitleCreator();
                     let node = document.getElementById("shortcuts collection");
-                    node.appendChild(titleCreator.getTitle(url));
+                    node.appendChild( titleCreator.getTitle(url));
                     
                     var onOffSiteButton = document.createElement('button');
                     onOffSiteButton.innerText = "On/Off site"
                     node.appendChild(onOffSiteButton)
                     
                     onOffSiteButton.addEventListener('click', function() {
-                        let enabler = new ExtensionEnablerButtonAction();
-                        enabler.onClickAction({url})
+                        let enabler = featuresFactory.createEnablerFeature();
+                        enabler.onClickAction({site: url})
                     }, false);
                     
                     for(let i = 0; i< data.data.length; i++){
                         // @TODO
                         // pass it ShortcutsViewRowCreator as parameter
-                        let shortcutBackendViewSingleSectionCreator = new ShortcutBackendViewSingleSectionCreator();
                         node.appendChild(
-                            shortcutBackendViewSingleSectionCreator.createShortcutPanelRow({
+                            sectionBuilder.createShortcutPanelRow({
                                 shortcutData: data.data[i], 
                                 site: url
                             })

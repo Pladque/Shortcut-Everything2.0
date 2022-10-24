@@ -7,8 +7,19 @@ const {inputStateManager} = require("../../common/PopUpInputStateManager")
 //      aleeee mby to da sie jakos latwiej zrobic
 
 export class NewShortcutButtonAction{
-    onClickAction(data){
+
+    constructor(handler){
+        this.handler = handler
+    }
+
+    async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
+    }
+
+    
+    async runFeature(data){
         inputStateManager.changeState(inputStateManager.states.new);
+        return data;
     }
 }
 

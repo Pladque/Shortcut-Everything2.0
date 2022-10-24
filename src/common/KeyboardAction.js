@@ -2,7 +2,7 @@ const {inputStateManager} = require("./PopUpInputStateManager")
 const {keySequenceHolder} = require("./KeySequenceHolder")
 const {messageTransporter} = require("./PopupAndContentCommunication/MessageTransporter")
 const {CREATE_NEW_SHOWRTCUT_MSG, REQUEST_SEPARATOR} = require("./PopupAndContentCommunication/Orders")
-const {updateSequence} = require("../_popup/OnClickFunctions/Generated/UpdateShortcutSequence")
+const {updateSequence} = require("../OnClickFeatures/Generated/UpdateShortcutSequence")
 
 function onKeyDownAction(){
 

@@ -1,12 +1,14 @@
 import { UrlParser } from "../../common/UrlParser";
 
-const {updateSequence} = require("../OnClickFunctions/Generated/UpdateShortcutSequence")
-const {UpdateShortcutDescription} = require("../OnClickFunctions/Generated/UpdateShortcutDescription")
-const {ChangeShortcutIndex} = require("../OnClickFunctions/Generated/ChangeShortcutIndex")
-const {ImproveShortcut} = require("../OnClickFunctions/Generated/ImproveShortcut")
-const {DeleteShortcut} = require("../OnClickFunctions/Generated/DeleteShortcut")
-const {EnableDisableShortcut} = require("../OnClickFunctions/Generated/EnableDisableShortcut")
+const {updateSequence} = require("../../OnClickFeatures/Generated/UpdateShortcutSequence")
+const {UpdateShortcutDescription} = require("../../OnClickFeatures/Generated/UpdateShortcutDescription")
+const {ChangeShortcutIndex} = require("../../OnClickFeatures/Generated/ChangeShortcutIndex")
+const {ImproveShortcut} = require("../../OnClickFeatures/Generated/ImproveShortcut")
+const {DeleteShortcut} = require("../../OnClickFeatures/Generated/DeleteShortcut")
+const {EnableDisableShortcut} = require("../../OnClickFeatures/Generated/EnableDisableShortcut")
 
+
+const {featuresFactory} = require("../../OnClickFeatures/FeaturesFactory")
 
 // @TODO te wszystkie funckej tu trzeba bedzie ogarnac
 export class ShortcutsViewRowCreator{
@@ -90,7 +92,8 @@ export class ShortcutsViewRowCreator{
             let parser = new UrlParser();
             let site = await parser.getSiteUrlIdentifierInPopup();
 
-            let enableDisableShortcut = new EnableDisableShortcut(site);
+            let enableDisableShortcut = featuresFactory.createSingleShortcutEnablerFeature();
+            // enableDisableShortcut.setSite(site);
             
             if(currState === "true"){
                 enableDisableShortcut.onClickAction( {shortcut: data.shortcutData.shortcut, newState: false});
@@ -107,7 +110,8 @@ export class ShortcutsViewRowCreator{
             let parser = new UrlParser();
             let site = await parser.getSiteUrlIdentifierInPopup();
 
-            let shortcutEraser = new DeleteShortcut(site);
+            let shortcutEraser = featuresFactory.createDeleteShortcutFeature();
+            // shortcutEraser.setSite(site);
             shortcutEraser.onClickAction( {shortcut: data.shortcutData.shortcut})
         }, false);
 
@@ -115,7 +119,10 @@ export class ShortcutsViewRowCreator{
             const descInputField = document.getElementById("shortcut desc " + data.shortcutData.shortcut);
             const parser = new UrlParser();
             const site = await parser.getSiteUrlIdentifierInPopup();
-            const descUpdater = new UpdateShortcutDescription(site);
+
+            const descUpdater = featuresFactory.createUpdateShortcutDescriptionFeature();
+            // descUpdater.setSite(site);
+
             descUpdater.onClickAction( {shortcut: data.shortcutData.shortcut, desc: descInputField.value } )
         }, false);
 
@@ -123,18 +130,21 @@ export class ShortcutsViewRowCreator{
             const indexInput = document.getElementById("wanted index " + data.shortcutData.shortcut)
             const parser = new UrlParser();
             const site = await parser.getSiteUrlIdentifierInPopup();
-            const indexChanger = new ChangeShortcutIndex(site);
+
+            const indexChanger = featuresFactory.createChangeShortcutIndexFeature();
+            // indexChanger.setSite(site);
             indexChanger.onClickAction( { shortcut: data.shortcutData.shortcut, ind: indexInput.value } )
         }, false);
 
 
         improveButton.addEventListener('click', async() => {
-            let shortcutImprover = new ImproveShortcut();
+            let shortcutImprover = featuresFactory.createImproveShortcutFeature();
             shortcutImprover.onClickAction( {shortcut: data.shortcutData.shortcut} )
         }, false);
 
         updateKeySequenceButton.addEventListener('click', async() => {
-            updateSequence.onClickAction( { shortcut : data.shortcutData.shortcut } )
+            const sequenceUpdater = featuresFactory.createUpdateShortcutSequenceFeature();
+            sequenceUpdater.onClickAction( { shortcut : data.shortcutData.shortcut } )
         }, false);
 
         return newNode;

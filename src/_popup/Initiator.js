@@ -21,7 +21,7 @@ export class Initiator{
 
         }
 
-        // //without this collapsableElemetnsEventsAdder doesnt see any buttons..
+        //without this collapsableElemetnsEventsAdder doesnt see any buttons..
         await new Promise(r => setTimeout(r, 20));
 
         let darkmodeEnabled = await this.darkModeManager.readDarkModeSettings();

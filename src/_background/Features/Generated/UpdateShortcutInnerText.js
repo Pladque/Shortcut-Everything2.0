@@ -1,19 +1,27 @@
+import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
 import { ShortcutUpdater } from "../../../common/ShortcutUpdater";
 
 
 export class UpdateShortcutInnerText{
-    constructor(site){
-        this.site = site
+    constructor(handler){
+        this.handler = handler
     }
 
-    onClickAction(data){
+    @addSitePropertyDecorator
+    async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
+    }
+
+    async runFeature(data){
         const shortcutUpdater = new ShortcutUpdater();
         shortcutUpdater.updateShortcut(
             data.shortcut, 
             ["attributes", "others", "innerText"],
             data.newText,
-            this.site
+            data.site
         )
+
+        return data
 
     }
 
