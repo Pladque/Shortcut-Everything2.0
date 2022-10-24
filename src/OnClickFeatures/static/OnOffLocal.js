@@ -1,8 +1,8 @@
-import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
-const { messageTransporter } = require("../../../common/PopupAndContentCommunication/MessageTransporter")
-const {ON_OFF_LOCAL_MSG} = require("../../../common/PopupAndContentCommunication/Orders")
-const {ExtensionEnableFeature} = require("../../../features/ExtensionEnableFeature/ExtensionEnableFeature")
+const { messageTransporter } = require("../../common/PopupAndContentCommunication/MessageTransporter")
+const {ON_OFF_LOCAL_MSG} = require("../../common/PopupAndContentCommunication/Orders")
+const {ExtensionEnableFeature} = require("../../features/ExtensionEnableFeature/ExtensionEnableFeature")
 // @TODO
 // tutaj chyba mg zrobic na czilku bez wysylania requesta, ale moze na razie niech tak bedzie
 export class ExtensionEnablerButtonAction{
@@ -18,7 +18,7 @@ export class ExtensionEnablerButtonAction{
     
     async runFeature(data){
         if(data.site){
-            let enabler = ExtensionEnableFeature();
+            let enabler = new ExtensionEnableFeature();
             enabler.onCallResponse({site: data.site});
         }else{
             messageTransporter.sendMessage(ON_OFF_LOCAL_MSG);

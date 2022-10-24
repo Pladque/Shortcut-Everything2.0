@@ -1,7 +1,7 @@
-import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
-const {UrlParser} = require("../../../common/UrlParser")
-const {storage} = require("../../../common/Storage")
+const {UrlParser} = require("../../common/UrlParser")
+const {storage} = require("../../common/Storage")
 
 
 export class DeleteShortcut{

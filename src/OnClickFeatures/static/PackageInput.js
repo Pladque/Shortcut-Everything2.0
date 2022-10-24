@@ -1,6 +1,6 @@
-import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
-const {storage} = require("../../../common/Storage")
+const {storage} = require("../../common/Storage")
 
 
 export class PackageLoaderButtonAction{

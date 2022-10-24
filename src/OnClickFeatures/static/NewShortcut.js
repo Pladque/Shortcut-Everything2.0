@@ -1,4 +1,4 @@
-const {inputStateManager} = require("../../../common/PopUpInputStateManager")
+const {inputStateManager} = require("../../common/PopUpInputStateManager")
 
 // @TODO
 //      DLACZEGO TO DZIALA

@@ -1,7 +1,10 @@
-import { HandleManager } from "../../common/HandlerManger";
-import { MessagePresenter } from "../../common/MessagePresenter";
-import { messageTransporter } from "../../common/PopupAndContentCommunication/MessageTransporter";
-import { UPDATE_CACHE } from "../../common/PopupAndContentCommunication/Orders";
+import { HandleManager } from "../common/HandlerManger";
+import { MessagePresenter } from "../common/MessagePresenter";
+import { messageTransporter } from "../common/PopupAndContentCommunication/MessageTransporter";
+import { UPDATE_CACHE } from "../common/PopupAndContentCommunication/Orders";
+import { ConsiderShortcutInnerText } from "../_background/Features/Generated/ConsiderShortcutInnerText";
+import { UpdateShortcutInnerText } from "../_background/Features/Generated/UpdateShortcutInnerText";
+import { UpdateShortcutSkippableAttributes } from "../_background/Features/Generated/UpdateShortcutSkippableAttributes";
 
 const {PackageCopyButtonAction} = require("./static/CopyPackage")
 const {PackageCreatorButtonAction} = require("./static/CreatePackage")
@@ -125,11 +128,23 @@ class FeaturesFactory{
     createChangeShortcutIndexFeature(){
         return new ChangeShortcutIndex(this.defaultHandler);
     }
+
+    //  ------  BACKEND FEATURES    -----   //
+
+    createUpdateShortcutInnerTextFeature(){
+        return new UpdateShortcutInnerText(this.onlyMessageHandler);
+    }
+
+    createConsiderShortcutInnerTextFeature(){
+        return new ConsiderShortcutInnerText(this.onlyMessageHandler);
+    }
+
+    createUpdateShortcutSkippableAttrsFeature(){
+        return new UpdateShortcutSkippableAttributes(this.onlyMessageHandler);
+    }
 }
 
 
 const featuresFactoryInstance = new FeaturesFactory();
-
-// Object.freeze(featuresFactoryInstance);
 
 export { featuresFactoryInstance as featuresFactory};

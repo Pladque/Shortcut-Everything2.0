@@ -1,7 +1,7 @@
-import { storage } from "../../../common/Storage";
-import { UrlParser} from "../../../common/UrlParser";
-import { ShortcutUpdater} from "../../../common/ShortcutUpdater";
-import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { storage } from "../../common/Storage";
+import { UrlParser} from "../../common/UrlParser";
+import { ShortcutUpdater} from "../../common/ShortcutUpdater";
+import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
 
 export class EnableDisableShortcut{

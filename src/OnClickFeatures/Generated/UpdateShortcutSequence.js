@@ -10,15 +10,15 @@
 // function onclick_updatekeySequence (shortcut) {
 //   showMessage("insert new Key sequence, then press ENTER, if such a sequence already exists, it will be overwritten")
 
-import { UrlParser } from "../../../common/UrlParser";
+import { UrlParser } from "../../common/UrlParser";
 
   
 //   oldShortcut = shortcut;
 //   changeInsertingMode(insertingShortcutModes.update);
 // }
 
-const {inputStateManager} = require("../../../common/PopUpInputStateManager")
-const {ShortcutUpdater} = require("../../../common/ShortcutUpdater")
+const {inputStateManager} = require("../../common/PopUpInputStateManager")
+const {ShortcutUpdater} = require("../../common/ShortcutUpdater")
 
 
 // @TODO zmienic nazwe zebyu nie bylo "popup feature" xd

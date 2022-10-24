@@ -1,6 +1,6 @@
-import { UrlParser } from "../../../common/UrlParser";
-import { storage } from "../../../common/Storage";
-import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { UrlParser } from "../../common/UrlParser";
+import { storage } from "../../common/Storage";
+import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
 
 export class RawShortcutsPresenterButtonAction{

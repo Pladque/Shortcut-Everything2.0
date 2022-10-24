@@ -20,3 +20,15 @@ const callListener = new CallListener(messageMatcher, messageResponse)
 callListener.liten();
     
 
+//      Kolejne kroki to:   
+//                          Sparametryzowac tak duzo jak sie da (zeby storage, parser i wgl wszystko bylo przekazywane parametrem, a nie na hama importowane)
+//                          mby rozdzielic frontend i backend bardziej (zeby inity byly np osobne)
+//                          wyoknac wszystkie @TODO
+//                          ujednolicic nazewnictwo (builder/creator? itp)
+//                          Dorobic Buildera do buttonow
+
+
+// Wzorce jakie mam (bede miec) - #1 Singleton      #2 Fabryka      #3 chain of responsibility      #4 Stan (inputStateManager chyba??)
+//                                #5 Mediator?(mysl gdzie)      #6 obserwator? (mysl gdzie)         #7 Builder (do buttonów we froncie)
+//                                #8 Dekorator
+

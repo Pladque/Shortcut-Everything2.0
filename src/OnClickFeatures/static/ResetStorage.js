@@ -1,7 +1,6 @@
-const {darkModeManager} = require("../../Frontend/DarkModeManager")
+const {storage} = require("../../common/Storage")
 
-
-export class DarkModeButtonAction{
+export class StorageReseterButtonAction{
 
     constructor(handler){
         this.handler = handler
@@ -10,10 +9,9 @@ export class DarkModeButtonAction{
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))
     }
-
     
     runFeature(data){
-        darkModeManager.switchMode();
+        storage.clearStorage();
         return data;
     }
 }

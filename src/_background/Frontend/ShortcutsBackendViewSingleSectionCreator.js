@@ -1,11 +1,4 @@
-import { featuresFactory } from "../../_popup/Features/FeaturesFactory";
-import { DeleteShortcut } from "../../_popup/Features/Generated/DeleteShortcut";
-import { EnableDisableShortcut } from "../../_popup/Features/Generated/EnableDisableShortcut";
-import { ConsiderShortcutInnerText } from "../Features/Generated/ConsiderShortcutInnerText";
-import { UpdateShortcutInnerText} from "../Features/Generated/UpdateShortcutInnerText";
-import { UpdateShortcutSkippableAttributes } from "../Features/Generated/UpdateShortcutSkippableAttributes";
-const {UpdateShortcutDescription} = require("../../_popup/Features/Generated/UpdateShortcutDescription")
-
+import { featuresFactory } from "../../OnClickFeatures/FeaturesFactory";
 
 export class ShortcutBackendViewSingleSectionCreator{
     createShortcutPanelRow(data){
@@ -127,11 +120,12 @@ export class ShortcutBackendViewSingleSectionCreator{
         
             updateInnerTextButton.addEventListener('click', function() {
                 
-                const innerTextUpdater  = new UpdateShortcutInnerText(data.site)
+                const innerTextUpdater  = featuresFactory.createUpdateShortcutInnerTextFeature();
                 const newText =document.getElementById("innerText "+ data.shortcutData.shortcut).value
                 innerTextUpdater.onClickAction({
                     shortcut: data.shortcutData.shortcut,
-                    newText: newText
+                    newText: newText,
+                    site: data.site,
                 })
 
             }, false);
@@ -139,24 +133,27 @@ export class ShortcutBackendViewSingleSectionCreator{
 
         descSubmitButton.addEventListener('click', function() {
             const descInputField = document.getElementById("shortcut desc " + data.shortcutData.shortcut)
+            
             const descUpdater = featuresFactory.createUpdateShortcutDescriptionFeature();
             descUpdater.setSite(data.site);
             descUpdater.onClickAction( {shortcut: data.shortcutData.shortcut, desc: descInputField.value } )
         }, false);
 
         onOffInnerTextButton.addEventListener('click', function() {
-            const considerInnerText = new ConsiderShortcutInnerText(data.site);
+            const considerInnerText = featuresFactory.createConsiderShortcutInnerTextFeature();
             
             if(onOffInnerTextButton.getAttribute("state") === "true" ){
                 considerInnerText.onClickAction( {
                     shortcut: data.shortcutData.shortcut,
-                    newState: false
+                    newState: false,
+                    site: data.site,
                 })
                 onOffInnerTextButton.setAttribute("state", false);
             }else{
                 considerInnerText.onClickAction( {
                     shortcut: data.shortcutData.shortcut,
-                    newState: true
+                    newState: true,
+                    site: data.site,
                 })
                 onOffInnerTextButton.setAttribute("state", true);
             }
@@ -166,10 +163,11 @@ export class ShortcutBackendViewSingleSectionCreator{
 
             updateSkipableAttribiutesAmountButton.addEventListener('click', function() {
                 const amountInput = document.getElementById("max skippable attribiutes "+ data.shortcutData.shortcut)
-                const skippableAttributesUpdater = new UpdateShortcutSkippableAttributes(data.site);
+                const skippableAttributesUpdater = featuresFactory.createUpdateShortcutSkippableAttrsFeature();
                 skippableAttributesUpdater.onClickAction({
                     shortcut: data.shortcutData.shortcut, 
                     newAmount: amountInput.value,
+                    site: data.site
                 })
 
             }, false);

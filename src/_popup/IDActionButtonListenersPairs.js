@@ -8,7 +8,7 @@
 // const {RawShortcutsPresenterButtonAction} = require("./Features/static/ShowShortcutsRaw")
 // const {DarkModeButtonAction} = require("./Features/static/DarkMode")
 
-const {featuresFactory} = require("./Features/FeaturesFactory")
+const {featuresFactory} = require("../OnClickFeatures/FeaturesFactory")
 
 // only for buttons that are not generated 
 export const idActionsListenersPairs = [

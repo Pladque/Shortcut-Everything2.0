@@ -1,6 +1,6 @@
-import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
-const {ShortcutUpdater} = require("../../../common/ShortcutUpdater")
+const {ShortcutUpdater} = require("../../common/ShortcutUpdater")
 
 export class ChangeShortcutIndex{
 

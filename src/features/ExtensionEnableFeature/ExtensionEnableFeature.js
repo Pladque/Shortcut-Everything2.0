@@ -8,17 +8,19 @@ export class ExtensionEnableFeature{
 
     @addSitePropertyDecorator
     async onCallResponse(data){
-        if(data.site === null || data.site ===undefined){
+        // if(data.site === null || data.site ===undefined){
 
-            let parser = new UrlParser();
-            data.site = await parser.getSiteUrlIdentifier();
-        }
+        //     let parser = new UrlParser();
+        //     data.site = await parser.getSiteUrlIdentifier();
+        // }
 
         let siteData = await storage.readLocalStorage(data.site).catch(e => {
             console.log(e);
         });
+
         siteData.info.enabled = !siteData.info.enabled
         readActivator.isExtensionEnabled = siteData.info.enabled;
+        
         const updatedRecord = siteData;
 
         await storage.saveToLocalStorage(data.site, updatedRecord).catch(e => {

@@ -16,13 +16,8 @@ export class CacheManager{
             const parser = new UrlParser();
             const data = await storage.readLocalStorage(await parser.getSiteUrlIdentifier())
             
-            // console.error("updated cache for: " + parser.getSiteUrlIdentifier())
-            
             const shortsCutInfo = this.searchAlghorythmObj.shortcutAction(data)
-
-            console.error("obiekt do zaladowania: " + JSON.stringify(data))
-
-
+            
             readActivator.isExtensionEnabled = data.info.enabled;
             
             await shortcutsListener.loadShortcuts(shortsCutInfo);

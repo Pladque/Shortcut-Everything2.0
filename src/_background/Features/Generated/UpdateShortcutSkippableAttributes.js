@@ -1,19 +1,27 @@
+import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
 import { ShortcutUpdater} from "../../../common/ShortcutUpdater";
 
 export class UpdateShortcutSkippableAttributes{
-     constructor(site){
-        this.site = site;
+    constructor(handler){
+        this.handler = handler
     }
 
-    async onClickAction (data) {
+    @addSitePropertyDecorator
+    async onClickAction(data){
+        this.handler.run(await this.runFeature(data))
+    }
+
+    async runFeature(data){
         let shortcutUpdater = new ShortcutUpdater();
                     
         await shortcutUpdater.updateShortcut(
             data.shortcut, 
             ["options", "maxAmonutOfAttribiutesToSkip"], 
             data.newAmount, 
-            this.site
+            data.site
         );
+
+        return data;
     }
 
 
