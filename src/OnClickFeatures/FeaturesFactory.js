@@ -1,10 +1,7 @@
-import { HandleManager } from "../common/HandlerManger";
-import { MessagePresenter } from "../common/MessagePresenter";
-import { messageTransporter } from "../common/PopupAndContentCommunication/MessageTransporter";
-import { UPDATE_CACHE } from "../common/PopupAndContentCommunication/Orders";
-import { ConsiderShortcutInnerText } from "../_background/Features/Generated/ConsiderShortcutInnerText";
-import { UpdateShortcutInnerText } from "../_background/Features/Generated/UpdateShortcutInnerText";
-import { UpdateShortcutSkippableAttributes } from "../_background/Features/Generated/UpdateShortcutSkippableAttributes";
+import { chainActionsSets } from "../common/ChainActionsSets";
+import { ConsiderShortcutInnerText } from "./Generated/InSettings/ConsiderShortcutInnerText";
+import { UpdateShortcutInnerText } from "./Generated/InSettings/UpdateShortcutInnerText";
+import { UpdateShortcutSkippableAttributes } from "./Generated/InSettings/UpdateShortcutSkippableAttributes";
 
 const {PackageCopyButtonAction} = require("./static/CopyPackage")
 const {PackageCreatorButtonAction} = require("./static/CreatePackage")
@@ -16,65 +13,30 @@ const {StorageReseterButtonAction} = require("./static/ResetStorage")
 const {SettingOpenerButtonAction} = require("./static/Settings")
 const {RawShortcutsPresenterButtonAction} = require("./static/ShowShortcutsRaw")
 
-const {ChangeShortcutIndex} = require("./Generated/ChangeShortcutIndex")
-const {DeleteShortcut} = require("./Generated/DeleteShortcut")
-const {EnableDisableShortcut} = require("./Generated/EnableDisableShortcut")
-const {ImproveShortcut} = require("./Generated/ImproveShortcut")
-const {UpdateShortcutDescription} = require("./Generated/UpdateShortcutDescription")
+const {ChangeShortcutIndex} = require("./Generated/InPopUp/ChangeShortcutIndex")
+const {DeleteShortcut} = require("./Generated/InPopUp/DeleteShortcut")
+const {EnableDisableShortcut} = require("./Generated/InPopUp/EnableDisableShortcut")
+const {ImproveShortcut} = require("./Generated/InPopUp/ImproveShortcut")
+const {UpdateShortcutDescription} = require("./Generated/InPopUp/UpdateShortcutDescription")
 
-const {updateSequence} = require("./Generated/UpdateShortcutSequence")
+const {updateSequence} = require("./Generated/InPopUp/UpdateShortcutSequence")
+
 
 // #2 Fabryka
 class FeaturesFactory{
 
-    // @TODO jakos lepiej te handlery tworzyc
     constructor(){
-        this.defaultHandler = new HandleManager();
-        this.defaultHandler.use((data) => {
-            messageTransporter.sendMessage(UPDATE_CACHE);
-           return data;
-        });
-
-
-        this.defaultHandler.use((data) => {
-            const messagePresenter = new MessagePresenter();
-            messagePresenter.showMessage("succefully updated")
-            return data;
-        });
-
-        this.defaultHandler.use(async (data) => {
-            await new Promise(r => setTimeout(r, 5000));
-            const messagePresenter = new MessagePresenter();
-            messagePresenter.clear()
-            return data;
-        });
-        
-        this.onlyMessageHandler = new HandleManager();
-        this.onlyMessageHandler.use( (data) => {
-            const messagePresenter = new MessagePresenter();
-            messagePresenter.showMessage("succefully updated")
-            return data;
-        });
-
-        this.onlyMessageHandler.use(async (data) => {
-            await new Promise(r => setTimeout(r, 5000));
-            const messagePresenter = new MessagePresenter();
-            messagePresenter.clear()
-            return data;
-        });
-        
-        this.nullHandler = new HandleManager();
-        this.nullHandler.use( (data) => {
-            return data
-        });
+        this.defaultHandler = chainActionsSets.defaultSet;
+        this.onlyMessageHandler = chainActionsSets.onlyMessageHandler;
+        this.emptyHandler = chainActionsSets.emptyHandler;
     }
 
     createShowShortcutsRawFeature(){
-        return new RawShortcutsPresenterButtonAction( this.nullHandler);
+        return new RawShortcutsPresenterButtonAction(this.emptyHandler);
     }
 
     createSettingFeature(){
-        return new SettingOpenerButtonAction(this.nullHandler);
+        return new SettingOpenerButtonAction(this.emptyHandler);
     }
 
     createResetStorageFeature(){
@@ -90,7 +52,7 @@ class FeaturesFactory{
     }
 
     createNewShortcutFeature(){
-        return new NewShortcutButtonAction(this.nullHandler);
+        return new NewShortcutButtonAction(this.emptyHandler);
     }
 
     createDarkModeFeature(){
@@ -98,14 +60,15 @@ class FeaturesFactory{
     }
 
     createCreatePackageFeature(){
-        return new PackageCreatorButtonAction(this.nullHandler);
+        return new PackageCreatorButtonAction(this.emptyHandler);
     }
 
     createCopyPackageFeature(){
-        return new PackageCopyButtonAction(this.nullHandler);
+        return new PackageCopyButtonAction(this.emptyHandler);
     }
 
     createUpdateShortcutSequenceFeature(){
+        updateSequence.setHandler(this.defaultHandler)
         return updateSequence;
     }
 
@@ -114,7 +77,7 @@ class FeaturesFactory{
     }
 
     createImproveShortcutFeature(){
-        return new ImproveShortcut(this.nullHandler);
+        return new ImproveShortcut(this.emptyHandler);
     }
 
     createSingleShortcutEnablerFeature(){
@@ -128,6 +91,7 @@ class FeaturesFactory{
     createChangeShortcutIndexFeature(){
         return new ChangeShortcutIndex(this.defaultHandler);
     }
+
 
     //  ------  BACKEND FEATURES    -----   //
 

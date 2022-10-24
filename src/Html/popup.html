@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>shortcut Everything popup</title>
+
+    <style>
+        /* general & light/dark mode */
+        body {
+            padding: 5px;
+            background-color: white;
+            color: black;
+            font-size: 25px;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        /* The switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: gray;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px gray;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* collabpasble items    */
+        .collapsible {
+            cursor: pointer;
+
+            padding: 18px;
+            width: 90%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        /* .active,
+        .collapsible:hover {}
+
+        /* Style the collapsible content. Note: hidden by default */
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+        }
+
+        .popup-content {
+            margin-left: 5%;
+            margin-right: 5%;
+            width: 90%;
+        }
+
+        .separator {
+            width: 100%;
+            padding-top: 8px;
+            padding-bottom: 3px;
+            border-bottom: 3px solid gray;
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="../../build/popup.js" charset="utf-8"></script>
+
+
+    <div style="width:400px;">
+        <div class="popup-content">
+
+            <div id="message" style="height: 50px;font-size: 12px;">
+
+            </div>
+
+            <label class="switch">
+                <input type="checkbox" id="dark-mode switch">
+                <span class="slider round"></span>
+            </label>
+
+            <button id="new_shortcut" style="font-weight:600;">Add</button>
+            <button id="on/off button local" style="font-weight:600;"> on/off</button>
+            <button id="settings button" style="font-weight:600;"> settings </button>
+
+            <div class="separator"></div>
+
+            <h2> Current Key Sequence </h2>
+            <input id="new keySequence input field" style="width: 60%;" value="" disabled />
+
+            <div class="separator"></div>
+
+            <h4>Create package for this page</h4>
+            <button id="create package button" style="font-weight:300;">Create package</button>
+
+            <input type="text" value="" placeholder="your package txt will be here" id="package create field">
+            <button id="copy package">Copy text</button>
+
+            <div id="fileContents" info="i guess it is some trash div"></div>
+
+            <div class="separator"></div>
+
+            <h4>Upload package</h4>
+
+            <form accept-charset="utf-8">
+                <input type="file" id="package input field" name="package">
+                <input type="submit" , id="package input submit button">
+            </form>
+
+            <div class="separator"></div>
+
+            <h4> Your shortucs on this page: </h4>
+            <div id="shortcuts collection">
+
+            </div>
+
+            <div class="separator"></div>
+
+            <button id="reset storage" style="width: 45%;">reset storage</button>
+            <button id="show shortcuts raw" style="width: 45%;">show shortcuts raw</button>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

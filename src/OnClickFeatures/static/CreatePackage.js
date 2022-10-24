@@ -1,7 +1,6 @@
 import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
 
 const {storage} = require("../../common/Storage")
-const {UrlParser} = require("../../common/UrlParser")
 
 
 export class PackageCreatorButtonAction{

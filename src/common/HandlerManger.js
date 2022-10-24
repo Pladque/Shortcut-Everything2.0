@@ -41,7 +41,7 @@ class Handler{
 
     // @TODO - validate if obj is handler
     setNexthandler(nextHandler){
-         this.nextHandler = nextHandler;
+        this.nextHandler = nextHandler;
     }
 
 }

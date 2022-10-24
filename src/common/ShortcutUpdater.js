@@ -1,5 +1,4 @@
 const {storage} = require("./Storage")
-const {UrlParser} = require("./UrlParser")
 
 export class ShortcutUpdater{
 

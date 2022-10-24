@@ -1,5 +1,5 @@
 
-// @TODO tu chyuba ten wzorzec co oddziela logike biznesowa od czegos tam zastosowac
+// @TODO? tu chyuba ten wzorzec co oddziela logike biznesowa od czegos tam zastosowac
 export class UrlParser{
     getSiteUrlIdentifier(){
         const url = this._getURL();

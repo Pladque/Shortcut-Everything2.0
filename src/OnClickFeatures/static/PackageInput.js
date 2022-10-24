@@ -1,5 +1,3 @@
-import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
-
 const {storage} = require("../../common/Storage")
 
 
@@ -9,6 +7,7 @@ export class PackageLoaderButtonAction{
         this.handler = handler
     }
 
+    // @TODO dodac tu @addSitePropertyDecorator
     async onClickAction(data){
          this.handler.run(await this.runFeature(data))
     }

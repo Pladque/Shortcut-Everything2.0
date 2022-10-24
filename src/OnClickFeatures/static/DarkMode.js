@@ -1,4 +1,4 @@
-const {darkModeManager} = require("../../_popup/Frontend/DarkModeManager")
+const {darkModeManager} = require("../../common/DarkModeManager")
 
 
 export class DarkModeButtonAction{
