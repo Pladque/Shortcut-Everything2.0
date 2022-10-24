@@ -10,32 +10,25 @@ export class PackageCreatorButtonAction{
         this.handler = handler
     }
 
+    @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))
     }
     
-    @addSitePropertyDecorator
     async runFeature(data){
-        chrome.tabs.query({currentWindow: true, active: true}, async function (tabs) {
-            var currentTab = tabs[0]; 
+        const site = data.site;
+            
+        const storageData = await storage.readLocalStorage(site)
 
-            // @TODO przeniesc to do klasy Parsera elegancko
-            const url = JSON.stringify(currentTab.url)
+        let packageJSON = {}
 
-            const parser = new UrlParser();
-            const parsedUrl = parser._parseURL(url);
-            const data = await storage.readLocalStorage(data.site)
+        packageJSON.site = site
+        packageJSON.data = storageData;
 
-            let packageJSON = {}
+        const packageStr = JSON.stringify(packageJSON)
 
-            packageJSON.site = parsedUrl
-            packageJSON.data = data;
-
-            const packageStr = JSON.stringify(packageJSON)
-
-            let pacakgeField = document.getElementById("package create field");
-            pacakgeField.setAttribute("value", packageStr)
-        });
+        let pacakgeField = document.getElementById("package create field");
+        pacakgeField.setAttribute("value", packageStr)
 
         return data;
     }

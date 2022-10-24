@@ -9,7 +9,6 @@ export function addSitePropertyDecorator(target, name, descriptor) {
   if (typeof fn == 'function') {
     descriptor.value = async function(...args) {
         const parser = new UrlParser();
-  
         if(args[0].site === undefined || args[0].site === null){
             if (location.hash == '#popup') {
                 args[0].site = await parser.getSiteUrlIdentifierInPopup();
@@ -17,7 +16,7 @@ export function addSitePropertyDecorator(target, name, descriptor) {
                 args[0].site = await parser.getSiteUrlIdentifier();
             }
         }
-            
+
         var result = fn.apply(this, args);
                     
         return result;

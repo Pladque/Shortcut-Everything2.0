@@ -1,13 +1,5 @@
 import { UrlParser } from "../../common/UrlParser";
 
-const {updateSequence} = require("../../OnClickFeatures/Generated/UpdateShortcutSequence")
-const {UpdateShortcutDescription} = require("../../OnClickFeatures/Generated/UpdateShortcutDescription")
-const {ChangeShortcutIndex} = require("../../OnClickFeatures/Generated/ChangeShortcutIndex")
-const {ImproveShortcut} = require("../../OnClickFeatures/Generated/ImproveShortcut")
-const {DeleteShortcut} = require("../../OnClickFeatures/Generated/DeleteShortcut")
-const {EnableDisableShortcut} = require("../../OnClickFeatures/Generated/EnableDisableShortcut")
-
-
 const {featuresFactory} = require("../../OnClickFeatures/FeaturesFactory")
 
 // @TODO te wszystkie funckej tu trzeba bedzie ogarnac
