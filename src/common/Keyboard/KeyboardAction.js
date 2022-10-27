@@ -4,6 +4,7 @@ const {messageTransporter} = require("../PopupAndContentCommunication/MessageTra
 const {CREATE_NEW_SHOWRTCUT_MSG, REQUEST_SEPARATOR} = require("../PopupAndContentCommunication/Orders")
 const {updateSequence} = require("../../OnClickFeatures/Generated/InPopUp/UpdateShortcutSequence")
 
+// #4 Stan
 function onKeyDownAction(){
 
     if(inputStateManager.getCurrentState() === inputStateManager.getStates().new){
@@ -64,16 +65,6 @@ function onKeyDownAction(){
     function _getShortcut(){
         return new Array(...keySequenceHolder.keySequence).join('-').toLowerCase();
     }
-
-    function _sendMessageToContent(msg){
-    chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, msg)
-        
-    })
-    }
-
-
-
 }
 
 

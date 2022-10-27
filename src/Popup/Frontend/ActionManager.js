@@ -1,5 +1,4 @@
 
-// #1 Singleton
 class VariableHolder{
     constructor(){
     }
@@ -17,7 +16,6 @@ class VariableHolder{
 const variableHolder = new VariableHolder();
 
 export class ActionsManager{
-
     collapsableEventsOnClickAction(){
         if( variableHolder.getGuard("ActionsManager_collapsableEventsOnClickAction") !== undefined){
             return;

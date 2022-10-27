@@ -3,7 +3,6 @@ import { MessagePresenter } from "./MessagePresenter";
 import { messageTransporter } from "./PopupAndContentCommunication/MessageTransporter";
 import { UPDATE_CACHE } from "./PopupAndContentCommunication/Orders";
 
-
 function createDefaultSet(){
     let defaultHandler = new HandleManager();
     defaultHandler.use((data) => {
@@ -18,7 +17,8 @@ function createDefaultSet(){
         return data;
     });
 
-    defaultHandler.use((data) => {
+    defaultHandler.use(async (data) => {
+        await new Promise(r => setTimeout(r, 5000));
         const messagePresenter = new MessagePresenter();
         messagePresenter.clear()
         return data;
@@ -37,7 +37,7 @@ function createOnlyMsgSet(){
     });
 
     onlyMessageHandler.use(async (data) => {
-        await new Promise(r => setTimeout(r, 5000));
+        // await new Promise(r => setTimeout(r, 5000));
         const messagePresenter = new MessagePresenter();
         messagePresenter.clear()
         return data;

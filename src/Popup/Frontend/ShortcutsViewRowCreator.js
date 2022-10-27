@@ -8,22 +8,18 @@ export class ShortcutsViewRowCreator{
 
     getRow(data){
         var newNode = document.createElement('div');
-        // newNode.setAttribute("style", "border: 2px solid #ffffff; border-radius: 25px; padding: 20px;")
-        // newNode.setAttribute("value", data.shortcutData.shortcut)
-        newNode.setAttribute("class", "content")
 
         let enableButton = document.createElement("BUTTON");
 
         if(data.shortcutData.options.enabled){
-        enableButton.innerText = "off"
+            enableButton.innerText = "off"
         }else{
-        enableButton.innerText = "on"
+            enableButton.innerText = "on"
         }
+
         enableButton.setAttribute("shortcut-enabled", data.shortcutData.options.enabled)
         enableButton.setAttribute("class", "enable button");
         enableButton.setAttribute("value", data.shortcutData.shortcut)
-
-        // var name = document.createTextNode(data.shortcutData.shortcut)
 
         var desbInputField = document.createElement("INPUT");
         desbInputField.setAttribute("type", "text");
@@ -79,6 +75,8 @@ export class ShortcutsViewRowCreator{
         newNode.appendChild(improveButton)
         newNode.appendChild(updateKeySequenceButton)
 
+        // @TODO! Jak bedzie builder czy cos tego typu, to przeniesc te funkcje do zewn. pliku i 
+        //          tylko robic buttonBUilder. ... .SetOnClickAction(onClickActionFunction)
         enableButton.addEventListener('click', async() => {
             const currState = enableButton.getAttribute("shortcut-enabled");
             
@@ -86,7 +84,6 @@ export class ShortcutsViewRowCreator{
             let site = await parser.getSiteUrlIdentifierInPopup();
 
             let enableDisableShortcut = featuresFactory.createSingleShortcutEnablerFeature();
-            // enableDisableShortcut.setSite(site);
             
             if(currState === "true"){
                 enableDisableShortcut.onClickAction( {shortcut: data.shortcutData.shortcut, newState: false});
@@ -104,7 +101,6 @@ export class ShortcutsViewRowCreator{
             let site = await parser.getSiteUrlIdentifierInPopup();
 
             let shortcutEraser = featuresFactory.createDeleteShortcutFeature();
-            // shortcutEraser.setSite(site);
             shortcutEraser.onClickAction( {shortcut: data.shortcutData.shortcut})
         }, false);
 
@@ -114,7 +110,6 @@ export class ShortcutsViewRowCreator{
             const site = await parser.getSiteUrlIdentifierInPopup();
 
             const descUpdater = featuresFactory.createUpdateShortcutDescriptionFeature();
-            // descUpdater.setSite(site);
 
             descUpdater.onClickAction( {shortcut: data.shortcutData.shortcut, desc: descInputField.value } )
         }, false);
@@ -125,7 +120,6 @@ export class ShortcutsViewRowCreator{
             const site = await parser.getSiteUrlIdentifierInPopup();
 
             const indexChanger = featuresFactory.createChangeShortcutIndexFeature();
-            // indexChanger.setSite(site);
             indexChanger.onClickAction( { shortcut: data.shortcutData.shortcut, ind: indexInput.value } )
         }, false);
 

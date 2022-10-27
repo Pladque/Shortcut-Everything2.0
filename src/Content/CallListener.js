@@ -1,5 +1,3 @@
-
-
 export class CallListener{
     constructor(messageMatcher, messageResponse) {
         this.messageMatcher = messageMatcher;

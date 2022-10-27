@@ -7,7 +7,6 @@ const {idActionsListenersPairs} = require("./IDActionButtonListenersPairs");
 const { ShortcutBackendViewSingleSectionCreator } = require("./Frontend/ShortcutsBackendViewSingleSectionCreator");
 const { BackendTitleCreator } = require("./Frontend/BackendTitleCreator");
 
-
 darkModeManager.setStorage(storage)
 
 const shortcutBackendViewSingleSectionCreator = new ShortcutBackendViewSingleSectionCreator();
@@ -18,7 +17,5 @@ const initiator = new Initiator(shortcutSectionCreator, darkModeManager, {addAct
 
 initiator.init();
 
-
 const listenersManager = new ListenersManager();
 listenersManager.listen(idActionsListenersPairs);
-

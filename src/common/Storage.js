@@ -1,9 +1,5 @@
-
 // #1 Singleton
 class Storage {
-  constructor() {
-   // ...
-  }
 
   async readLocalStorage (key) {
       return new Promise((resolve, reject) => {

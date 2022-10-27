@@ -18,15 +18,10 @@ export class PackageLoaderButtonAction{
             let reader = new FileReader();
             reader.readAsText(file, "UTF-8");
             reader.onload = async function (evt) {
-            // alert(evt.target.result)
-        
             const dataJSON = JSON.parse(evt.target.result);
 
             await storage.saveToLocalStorage(dataJSON.site, (dataJSON.data))
         
-            //alert(JSON.stringify(await storage.readLocalStorage(dataJSON.site)))
-
-            // showMessage("Shortcuts read succefully!")
         }
         reader.onerror = function (evt) {
                 console.error("error reading file")

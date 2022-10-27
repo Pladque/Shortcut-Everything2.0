@@ -1,4 +1,8 @@
 import { chainActionsSets } from "../common/ChainActionsSets";
+import { ExtensionEnableFeature } from "../ContentActionsFeatures/ExtensionEnableFeature/ExtensionEnableFeature";
+import { ImproveShortcutFeature } from "../ContentActionsFeatures/improveShortcutFeature/ImproveShortcut";
+import { NewShortcutFeature } from "../ContentActionsFeatures/newShortcutFeature/newShortcut";
+import { UpdateCacheFeature } from "../ContentActionsFeatures/UpdateCacheFeature/UpdateCacheFeature";
 import { ConsiderShortcutInnerText } from "./Generated/InSettings/ConsiderShortcutInnerText";
 import { UpdateShortcutInnerText } from "./Generated/InSettings/UpdateShortcutInnerText";
 import { UpdateShortcutSkippableAttributes } from "./Generated/InSettings/UpdateShortcutSkippableAttributes";
@@ -106,6 +110,26 @@ class FeaturesFactory{
     createUpdateShortcutSkippableAttrsFeature(){
         return new UpdateShortcutSkippableAttributes(this.onlyMessageHandler);
     }
+
+
+    //  ------  CONTENT FEATURES    -----   //
+
+    createNewShortcutFeatureContent(){
+        return new NewShortcutFeature();
+    }
+    
+    createImproveShortcutFeatureContent(){
+        return new ImproveShortcutFeature();
+    }
+
+    createExtensionEnableFeatureContent(){
+        return new ExtensionEnableFeature();
+    }
+
+    createUpdateCacheFeature(){
+        return new UpdateCacheFeature()
+    }
+
 }
 
 

@@ -1,12 +1,10 @@
-import { SearchAlghorythm } from "../../common/ShortcutExecutors/SearchAlghorythm";
-import { ShortcutExecutor } from "../../common/ShortcutExecutors/ShortcutExecutor";
+import { createShortcutExecutor } from "../../common/ShortcutExecutors/CreateShortcutExecutor";
 import { CacheManager } from "./CacheManager";
-
 
 export class UpdateCacheFeature{
     async onCallResponse(data){
-        const searchAlghorythm = new SearchAlghorythm();
-        const shortcutExecutor = new ShortcutExecutor(searchAlghorythm, {});
+        const shortcutExecutor = createShortcutExecutor()
+
         new CacheManager(shortcutExecutor).updateCache();
     }
 }

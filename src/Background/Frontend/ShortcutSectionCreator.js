@@ -1,6 +1,4 @@
 const { featuresFactory } = require ("../../OnClickFeatures/FeaturesFactory");
-
-const {BackendTitleCreator} = require("./BackendTitleCreator")
 const {STORAGE_RESERVED_NAMES_PREFIX} = require("../../common/PopupAndContentCommunication/Orders")
 
 // Creates shortcut nodes for page

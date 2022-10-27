@@ -1,13 +1,3 @@
-// const {PackageCopyButtonAction} = require("./Features/static/CopyPackage")
-// const {PackageCreatorButtonAction} = require("./Features/static/CreatePackage")
-// const {NewShortcutButtonAction} = require("./Features/static/NewShortcut")
-// const {ExtensionEnablerButtonAction} = require("./Features/static/OnOffLocal")
-// const {PackageLoaderButtonAction} = require("./Features/static/PackageInput")
-// const {SettingOpenerButtonAction} = require("./Features/static/Settings")
-// const {StorageReseterButtonAction} = require("./Features/static/ResetStorage")
-// const {RawShortcutsPresenterButtonAction} = require("./Features/static/ShowShortcutsRaw")
-// const {DarkModeButtonAction} = require("./Features/static/DarkMode")
-
 const {featuresFactory} = require("../OnClickFeatures/FeaturesFactory")
 
 // only for buttons that are not generated 

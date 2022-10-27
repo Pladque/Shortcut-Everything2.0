@@ -16,7 +16,6 @@ export class ImproveShortcut{
     
     async runFeature (data) {
         messageTransporter.sendMessage(CREATE_NEW_DOUBLE_SHOWRTCUT_MSG + REQUEST_SEPARATOR + data.shortcut)
-        //showMessage("updated description")
         return data;
     }
 }

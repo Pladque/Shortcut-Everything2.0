@@ -1,5 +1,3 @@
-
-
 export class MessagePresenter{
     showMessage(message){
         document.getElementById('message').innerText = `${message} at ${this._createTimeString()}`

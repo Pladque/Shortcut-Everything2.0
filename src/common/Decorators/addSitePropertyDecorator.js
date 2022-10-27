@@ -1,11 +1,9 @@
 const {UrlParser} = require("../UrlParser")
 
-// #8 Dekorator
+// #3 Dekorator
 export function addSitePropertyDecorator(target, name, descriptor) {
   var fn = descriptor.value;
  
-  // Checks if "descriptor.value"
-  // is a function or not
   if (typeof fn == 'function') {
     descriptor.value = async function(...args) {
         const parser = new UrlParser();

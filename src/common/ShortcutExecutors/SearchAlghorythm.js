@@ -2,12 +2,6 @@ const {ATTRIBIUTES_TO_SKIP} = require("../../configVariables")
 
 
 export class SearchAlghorythm{
-
-    constructor(){
-
-    }
-
-
     getElementWithProperties(elementProperties, fullSearch){
         let allElements;
 
@@ -43,10 +37,6 @@ export class SearchAlghorythm{
         const attributes_names = this._getJSONfieldNames(elementPropertiesJSON)
         let noMatchingFields = 0;
         let matchingElements = []
-
-        // debug
-        let min_noMatchingFields = 99999;
-        //
         
         for(let i =0; i<allElements.length; i++){
             let skippedAttribiutes = 0;
@@ -104,14 +94,10 @@ export class SearchAlghorythm{
         if(matchingElements.length >=1){
             let wantedIndexFinal = indexOfWantetElement;
 
-            // cAlert(indexOfWantetElement)
             if(indexOfWantetElement < 0){
             wantedIndexFinal = Math.max(0, matchingElements.length+indexOfWantetElement);
             }
 
-            // cAlert(wantedIndexFinal);
-
-            // cAlert(isInViewport(matchingElements[Math.min(wantedIndexFinal, matchingElements.length-1)].element))
             return  matchingElements[Math.min(wantedIndexFinal, matchingElements.length-1)].element;
         }
         

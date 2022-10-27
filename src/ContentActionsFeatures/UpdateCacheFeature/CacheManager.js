@@ -3,8 +3,6 @@ const {UrlParser} = require("../../common/UrlParser")
 const {shortcutsListener} = require("../../Content/ShortcutsListener")
 const {readActivator} = require("../common/ReadActivator")
 
-// powinna miec funckje typu update cache i to chyba tyle
-// niech sam algos wyszukujacy bedzie przekazywany jakims obiektem z funkcja o konkretnej nazwie
 export class CacheManager{
 
     constructor(searchAlghorythmObj){

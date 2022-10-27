@@ -1,5 +1,4 @@
 
-// #3 chain of responsibility
 export class HandleManager{
     constructor(){
         this.handers = []

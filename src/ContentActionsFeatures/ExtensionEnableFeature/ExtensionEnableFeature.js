@@ -1,19 +1,11 @@
 import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropertyDecorator";
-
 const {storage} = require("../../common/Storage")
-const { UrlParser} = require("../../common/UrlParser")
 const {readActivator} = require("../common/ReadActivator")
 
 export class ExtensionEnableFeature{
 
     @addSitePropertyDecorator
     async onCallResponse(data){
-        // if(data.site === null || data.site ===undefined){
-
-        //     let parser = new UrlParser();
-        //     data.site = await parser.getSiteUrlIdentifier();
-        // }
-
         let siteData = await storage.readLocalStorage(data.site).catch(e => {
             console.log(e);
         });

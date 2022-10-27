@@ -5,12 +5,8 @@ class KeySequenceHolder {
     this.keySequence = new Set();
     this.keySequenceStack = [];
   }
-
- 
 }
 
 const keySequenceHolderInstance = new KeySequenceHolder();
-
-// Object.freeze(storageInstance);
 
 export { keySequenceHolderInstance as keySequenceHolder};

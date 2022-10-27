@@ -1,4 +1,3 @@
-
 class MessageTransporter{
     sendMessage(msg){
         chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
@@ -6,7 +5,6 @@ class MessageTransporter{
         })
     }
 }
-
 
 const messageTransporterInstance = new MessageTransporter();
 

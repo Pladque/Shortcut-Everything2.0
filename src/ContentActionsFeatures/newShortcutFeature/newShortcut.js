@@ -4,7 +4,6 @@ const {HtmlElementParser} = require("../common/HtmlElementParser")
 const {UrlParser} = require("../../common/UrlParser")
 const {storage} = require("../../common/Storage")
 
-// @TODO - tutaj musze te funkcje podorabiac iwgl pozmieniac na bardziej obiektowe
 export class NewShortcutFeature{
 
     constructor(){

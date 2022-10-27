@@ -1,6 +1,3 @@
-
-
-
 // #1 Singleton
 class ReadActivator {
   constructor() {

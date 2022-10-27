@@ -25,68 +25,9 @@ const initiator = new Initiator(shortcutsViewBuilder, darkModeManager, eventsAdd
 const listenersManager = new ListenersManager();
 const keyboardReader = new KeyboardReader(onKeyDownAction)
 
-
-
 // // INIT actions
 initiator.init();
 
 // Adding Listeners
 listenersManager.listen(idActionsListenersPairs);
 keyboardReader.listen();
-
-
-// //////////////////
-// function log()
- 
-// // Decorator function
-// {
-//   return function decorator()
-//     {
-//     console.log(123)
-//     return (...args) =>
-//         {
-//       console.log(`HEY HEY HEY`);
-//       return {};
-//     };
-//   }
-// }
- 
-// // Decorators
-// @log 
-// class gfg
-// {
-//   constructor(name, category) {}
-// }
- 
-// const e = new gfg('geek', 'code');
- 
-// // Arguments for Demo: args
-// console.error(e);
-
-// addSitePropertyDecorator
-
-// class temp{
-
-//     @addSitePropertyDecorator
-//     add(a,b){
-//         return a + b
-//     }
-// }
-
-// const t = temp();
-// console.error(t.add(5 ,3));
-
-
-
-    
-  
-// class geek {
-//   @addSitePropertyDecorator
-//   add(a) {
-//     console.error("Inside add: " + JSON.stringify(a))
-//     return a;
-//   }
-// }
-  
-// var e = new geek();
-// console.error(JSON.stringify(e.add({hey:123})));

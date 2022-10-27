@@ -17,7 +17,6 @@ export class PackageCopyButtonAction{
     pacakgeField.setSelectionRange(0, 99999); /* For mobile devices */
     
     navigator.clipboard.writeText(pacakgeField.value);
-    // showMessage("Copied the package!")
 
     return data;
   }
