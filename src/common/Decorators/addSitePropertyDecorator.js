@@ -1,6 +1,9 @@
 const {UrlParser} = require("../UrlParser")
 
 // #3 Dekorator
+// @DESC: Adds to 1st argument new property 'site'
+//        args[0].site will contains siteIdentifier
+// IF args[0].site ALREADY EXISTS NOTHING WILL BE ADDED!
 export function addSitePropertyDecorator(target, name, descriptor) {
   var fn = descriptor.value;
  

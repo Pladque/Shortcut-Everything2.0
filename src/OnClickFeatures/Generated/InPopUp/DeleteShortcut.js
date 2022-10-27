@@ -13,6 +13,9 @@ export class DeleteShortcut{
         this.site = site;
     }
 
+    // Required fields in data: site, shortcut
+    // site - current side identyfier
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

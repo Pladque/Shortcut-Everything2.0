@@ -1,4 +1,5 @@
 
+// Allows to run fucntions in chain
 export class HandleManager{
     constructor(){
         this.handers = []
@@ -38,7 +39,6 @@ class Handler{
         }
     }
 
-    // @TODO - validate if obj is handler
     setNexthandler(nextHandler){
         this.nextHandler = nextHandler;
     }

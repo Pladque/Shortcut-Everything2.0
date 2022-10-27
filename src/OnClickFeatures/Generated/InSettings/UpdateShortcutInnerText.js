@@ -7,6 +7,10 @@ export class UpdateShortcutInnerText{
         this.handler = handler
     }
 
+    // Required fields in data: shortcut, newText, site
+    // site - current side identyfier
+    // newText - new Value for InnerText
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

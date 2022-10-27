@@ -10,6 +10,8 @@ export class ImproveShortcut{
 
     setSite(site){}
 
+    // Required fields in data: shortcut
+    // shortcut - ex. alt-p
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))
     }

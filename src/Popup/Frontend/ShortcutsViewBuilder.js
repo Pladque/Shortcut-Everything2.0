@@ -1,5 +1,4 @@
 
-
 export class ShortcutsViewBuilder{
 
     constructor(titleCreator, rowCreator, storage, parser){

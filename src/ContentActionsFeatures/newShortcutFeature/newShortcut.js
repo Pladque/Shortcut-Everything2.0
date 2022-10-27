@@ -11,6 +11,8 @@ export class NewShortcutFeature{
     }
 
     // function called when gets called by popup
+    // Required fields in data: request
+    // request - request messeg that was sent by Popup (and contains valuable info)
     async onCallResponse(data){
         const shortcutStartInd = CREATE_NEW_SHOWRTCUT_MSG.length + REQUEST_SEPARATOR.length
         const shortcut = data.request.substr(shortcutStartInd, data.request.length-1)

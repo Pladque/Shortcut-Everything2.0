@@ -8,7 +8,7 @@ export class CacheManager{
     constructor(searchAlghorythmObj){
         this.searchAlghorythmObj = searchAlghorythmObj;
     }
-        
+    
     async updateCache(){
         try {
             const parser = new UrlParser();

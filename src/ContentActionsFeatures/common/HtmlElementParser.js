@@ -4,7 +4,7 @@ export class HtmlElementParser{
 
     // @DESC: Gets data from object (element) user clicked on 
     // @INPUT: event
-    // @RETURNS: all data from event.target but "href"  
+    // @RETURNS: all data from event.target but skip ones from ATTRIBIUTES_TO_SKIP
     async parseElement(e){
         e = e || window.event;
         var target = e.target || e.srcElement
@@ -45,9 +45,6 @@ export class HtmlElementParser{
         return temp_button_data;
     }
 
-    // @change
-    //  dodalem to "let" do zmiennych, mozliwe ze ta funckja jak dziala to cos inneog nie bd dzialac xd, wiec moze po prostu ja wywalic
-    // returns inner text that belongs only to given element, excludes children innerTexts
     _onlyElementInnerText(el){
         let child = el.firstChild;
         let texts = [];

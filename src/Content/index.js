@@ -5,17 +5,18 @@ const {Initializator} = require("./Initializator")
 const {CallListener} = require("./CallListener");
 const { createShortcutExecutor } = require("../common/ShortcutExecutors/CreateShortcutExecutor");
 
+// Create shortcut Executor
 const shortcutExecutor = createShortcutExecutor()
 
 shortcutsListener.start();
 
+// Init key reading actions
 const initializator = new Initializator(shortcutExecutor);
 initializator.init();
 
+// Init Calls LIsteners
 const messageMatcher = new MessageMatcher();
 const callListener = new CallListener(messageMatcher, messageResponse)
 
+// Start to listen
 callListener.liten();
-    
-
-// Zaimplementowane wzorce:      #1 Singleton      #2 Fabryka      #3 Dekorator        #4 Stan     #5 Strategia

@@ -6,7 +6,6 @@ class SearchElementStrategy{
     setStrategy(strategy){
         this.strategy = strategy;
     }
-
 }
 
 const searchAlghorythmStrategyInstance = new SearchElementStrategy();

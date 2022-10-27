@@ -3,6 +3,7 @@ import { MessagePresenter } from "./MessagePresenter";
 import { messageTransporter } from "./PopupAndContentCommunication/MessageTransporter";
 import { UPDATE_CACHE } from "./PopupAndContentCommunication/Orders";
 
+// setup chains of actions, it will be added to some features by featuresFactory
 function createDefaultSet(){
     let defaultHandler = new HandleManager();
     defaultHandler.use((data) => {

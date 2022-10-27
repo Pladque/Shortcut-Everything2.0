@@ -10,7 +10,9 @@ export class ImproveShortcutFeature{
         this.shortcutMem = "none";
     }
 
-     // function called when gets called by popup
+    // function called when gets called by popup
+    // Required fields in data: request
+    // request - request messeg that was sent by Popup (and contains valuable info)
     async onCallResponse(data){
         const shortcutToImprove = data.request.split(REQUEST_SEPARATOR)[1]
         await this._improveShortcut(shortcutToImprove)

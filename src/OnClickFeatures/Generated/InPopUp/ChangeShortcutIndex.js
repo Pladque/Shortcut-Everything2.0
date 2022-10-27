@@ -12,6 +12,10 @@ export class ChangeShortcutIndex{
         this.site = site;
     }
 
+    // Required fields in data: site, ind, shortcut
+    // site - current side identyfier
+    // ind - new Index of element
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

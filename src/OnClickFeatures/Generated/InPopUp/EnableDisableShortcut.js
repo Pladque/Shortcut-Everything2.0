@@ -12,12 +12,15 @@ export class EnableDisableShortcut{
         this.site = site;
     }
 
+    // Required fields in data: site, newState, shortcut
+    // site - current side identyfier
+    // newState - new state (true or false) for enabled field
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))
     }
 
-    // @TODO! - dopisac do tyc wszystkich featurow "jakich sie spodziewam pól w "data"  "
     async runFeature (data) {
         
         let shortcutUpdater = new ShortcutUpdater();

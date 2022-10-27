@@ -6,6 +6,10 @@ export class UpdateShortcutSkippableAttributes{
         this.handler = handler
     }
 
+    // Required fields in data: site, newAmount,  shortcut
+    // site - current side identyfier
+    // newAmount - new Value of skippableAttrs
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

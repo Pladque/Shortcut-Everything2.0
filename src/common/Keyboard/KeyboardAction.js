@@ -5,6 +5,7 @@ const {CREATE_NEW_SHOWRTCUT_MSG, REQUEST_SEPARATOR} = require("../PopupAndConten
 const {updateSequence} = require("../../OnClickFeatures/Generated/InPopUp/UpdateShortcutSequence")
 
 // #4 Stan
+// Action for key in Popup
 function onKeyDownAction(){
 
     if(inputStateManager.getCurrentState() === inputStateManager.getStates().new){

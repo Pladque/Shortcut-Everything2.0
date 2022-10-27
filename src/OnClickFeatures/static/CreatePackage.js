@@ -2,13 +2,13 @@ import { addSitePropertyDecorator } from "../../common/Decorators/addSitePropert
 
 const {storage} = require("../../common/Storage")
 
-
 export class PackageCreatorButtonAction{
 
     constructor(handler){
         this.handler = handler
     }
 
+    // Required fields in data: site
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

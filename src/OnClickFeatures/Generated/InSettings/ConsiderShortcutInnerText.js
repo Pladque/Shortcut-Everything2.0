@@ -7,6 +7,10 @@ export class ConsiderShortcutInnerText{
         this.handler = handler
     }
 
+    // Required fields in data: shortcut, newState, site
+    // site - current side identyfier
+    // newState - new value (true or false) for checkInnerText 
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

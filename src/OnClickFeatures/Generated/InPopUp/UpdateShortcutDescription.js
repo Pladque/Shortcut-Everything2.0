@@ -12,6 +12,10 @@ export class UpdateShortcutDescription{
         this.site = site;
     }
 
+    // Required fields in data: site, desc, shortcut
+    // site - current side identyfier
+    // desc - new description of shortcut
+    // shortcut - ex. alt-p
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

@@ -1,4 +1,4 @@
-
+// @DESC: using this for saving global variables
 class VariableHolder{
     constructor(){
     }
@@ -15,6 +15,7 @@ class VariableHolder{
 
 const variableHolder = new VariableHolder();
 
+// Collection of event actions
 export class ActionsManager{
     collapsableEventsOnClickAction(){
         if( variableHolder.getGuard("ActionsManager_collapsableEventsOnClickAction") !== undefined){

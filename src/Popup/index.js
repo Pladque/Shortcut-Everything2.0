@@ -21,11 +21,12 @@ const shortcutsViewBuilder = new ShortcutsViewBuilder(titleCreator, shortcutsVie
 
 darkModeManager.setStorage(storage);
 
+// create Initiators
 const initiator = new Initiator(shortcutsViewBuilder, darkModeManager, eventsAdder);
 const listenersManager = new ListenersManager();
 const keyboardReader = new KeyboardReader(onKeyDownAction)
 
-// // INIT actions
+// Init actions
 initiator.init();
 
 // Adding Listeners

@@ -26,6 +26,4 @@ class PopUpInputStateManager{
 
 const popUpInputStateManagerInstance = new PopUpInputStateManager();
 
-// Object.freeze(popUpInputStateManagerInstance);
-
 export { popUpInputStateManagerInstance as inputStateManager};

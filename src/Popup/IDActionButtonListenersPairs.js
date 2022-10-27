@@ -1,6 +1,8 @@
 const {featuresFactory} = require("../OnClickFeatures/FeaturesFactory")
 
-// only for buttons that are not generated 
+// @DESC: Only for static buttons
+// elementId - Id of static page button (or other element)
+// actionObject - object that follows schema definded in src/Docs/FeatureModel.cs
 export const idActionsListenersPairs = [
     {
         elementId: "copy package",

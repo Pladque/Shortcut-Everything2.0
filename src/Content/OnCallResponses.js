@@ -1,6 +1,7 @@
 import * as Order from "../common/PopupAndContentCommunication/Orders"
 import { featuresFactory } from "../OnClickFeatures/FeaturesFactory";
 
+// list that satifsy scheme from messageResponseModel.js
 export const messageResponse= [
     { 
         msg: Order.CREATE_NEW_SHOWRTCUT_MSG,

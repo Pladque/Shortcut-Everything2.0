@@ -5,6 +5,7 @@ export class SettingOpenerButtonAction{
         this.handler = handler
     }
 
+    // No requirements for data
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))
     }

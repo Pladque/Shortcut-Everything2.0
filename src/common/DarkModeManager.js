@@ -31,7 +31,6 @@ class DarkModeManager{
         return JSON.parse(darkmodeStatus).darkmode;
     }
 
-    // tu cos mi nie dzialal..
     async manageDarkMode(darkmodeEnabled){
         document.getElementById('dark-mode switch').checked = darkmodeEnabled;
         this.darkmodeEnabled = darkmodeEnabled;
@@ -71,10 +70,7 @@ class DarkModeManager{
         var content = document.getElementById("DarkModetext");
         element.className = "light-mode";
     }
-
-
 }
-
 
 const darkModeManagerInstance = new DarkModeManager();
 

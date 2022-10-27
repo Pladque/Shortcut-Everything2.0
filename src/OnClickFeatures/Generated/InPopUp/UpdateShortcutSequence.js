@@ -16,11 +16,14 @@ class UpdateSequencePopupFeature{
         this.handler = handler
     }
 
+    // Required fields in data: site, shortcut
+    // site - current side identyfier
+    // shortcut - ex. alt-p
+    @addSitePropertyDecorator
     async onClickAction(data){
         await this.runFeature(data)
     }
 
-    @addSitePropertyDecorator
     async runFeature(data){
         this.oldShortcut = data.shortcut;
         this.site = data.site;

@@ -7,7 +7,7 @@ export class PackageLoaderButtonAction{
         this.handler = handler
     }
 
-    // @TODO dodac tu @addSitePropertyDecorator
+    // No requirements for data
     async onClickAction(data){
          this.handler.run(await this.runFeature(data))
     }

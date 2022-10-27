@@ -11,6 +11,7 @@ export class StrategySetter{
         this.searchAlghorythm = searchAlghorythm;
     }
 
+    // Defines conditions to use strategy
     setStrategy(){
         if(autoCheckInnerTextChange && SEARCH_FULL){
             searchAlghorythmStrategy.setStrategy(new SearchElementLifebuoyStrategy(this.searchAlghorythm));

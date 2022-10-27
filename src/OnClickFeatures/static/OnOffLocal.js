@@ -11,6 +11,7 @@ export class ExtensionEnablerButtonAction{
         this.handler = handler
     }
 
+    // Required fields in data: site
     @addSitePropertyDecorator
     async onClickAction(data){
         this.handler.run(await this.runFeature(data))

@@ -4,6 +4,9 @@ const {readActivator} = require("../common/ReadActivator")
 
 export class ExtensionEnableFeature{
 
+    // function called when gets called by popup
+    // Required fields in data: site
+    // site - current site identyfier
     @addSitePropertyDecorator
     async onCallResponse(data){
         let siteData = await storage.readLocalStorage(data.site).catch(e => {
