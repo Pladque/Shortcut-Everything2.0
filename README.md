@@ -13,6 +13,7 @@
 * [babel](https://github.com/babel/babel-loader)
 
 ### Requirements Instalation
+###### Windows
 
 ```
 npm install webpack webpack-cli
