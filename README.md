@@ -6,11 +6,11 @@
 
 ## Requirements
 
-[x] [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-[x] [webpack](https://webpack.js.org/guides/installation/)
+* [webpack](https://webpack.js.org/guides/installation/)
 
-[x] [babel](https://www.google.com)
+* [babel](https://www.google.com)
 
 ### Requirements Instalation
 
