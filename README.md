@@ -29,8 +29,8 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 2. Then, Go to
 
-- edge://extensions/ (if using Edge)
-- Or simply open extensions panel
+⋅⋅⋅ - edge://extensions/ (if using Edge)
+⋅⋅⋅ - Or simply open extensions panel
 
 3. Turn on 'Developer Mode'
 
