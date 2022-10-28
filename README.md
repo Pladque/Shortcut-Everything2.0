@@ -10,7 +10,7 @@
 
 * [webpack](https://webpack.js.org/guides/installation/)
 
-* [babel](https://www.google.com)
+* [babel](https://github.com/babel/babel-loader)
 
 ### Requirements Instalation
 
