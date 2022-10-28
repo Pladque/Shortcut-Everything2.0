@@ -2,13 +2,12 @@ import { UrlParser } from "../../common/UrlParser";
 
 const {featuresFactory} = require("../../OnClickFeatures/FeaturesFactory")
 
-// @TODO! te wszystkie funckej tu trzeba bedzie ogarnac
-//      To bedzie button bulderem
 export class ShortcutsViewRowCreator{
 
     getRow(data){
         var newNode = document.createElement('div');
-
+        newNode.setAttribute("class", "content")
+        
         let enableButton = document.createElement("BUTTON");
 
         if(data.shortcutData.options.enabled){
@@ -75,8 +74,6 @@ export class ShortcutsViewRowCreator{
         newNode.appendChild(improveButton)
         newNode.appendChild(updateKeySequenceButton)
 
-        // @TODO! Jak bedzie builder czy cos tego typu, to przeniesc te funkcje do zewn. pliku i 
-        //          tylko robic buttonBUilder. ... .SetOnClickAction(onClickActionFunction)
         enableButton.addEventListener('click', async() => {
             const currState = enableButton.getAttribute("shortcut-enabled");
             
