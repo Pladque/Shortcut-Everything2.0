@@ -1,4 +1,5 @@
 import { addSitePropertyDecorator } from "../../../common/Decorators/addSitePropertyDecorator";
+import { ShortcutFinder } from "../../../common/ShortcutFinder";
 
 const {storage} = require("../../../common/Storage")
 
@@ -41,7 +42,7 @@ export class DeleteShortcut{
         
         let shortcutrsArr = presentShortcuts.data
         
-        let indexOfShortcut = this._getIndexOfShortcut(shortcutrsArr, shortcutToDelete)
+        let indexOfShortcut = new ShortcutFinder().findShortcut(shortcutrsArr, shortcutToDelete)
         
         let shortcutInfo = {}
         if(indexOfShortcut === -1){  // not found shortcut
@@ -59,19 +60,6 @@ export class DeleteShortcut{
         alert("deleted " + shortcutToDelete +" "+ shortcutInfo["desc"])
 
         }
-
-        // @TODO! - uzywam tego czesto w innych klasach, przeniesc to do nwej klasy!!
-        _getIndexOfShortcut(shortcutrsArr, shortcut){
-            let index = -1;
-            for(let i =0; i< shortcutrsArr.length; i++){
-                if(shortcutrsArr[i]["shortcut"] === shortcut){
-                index = i;
-                break;
-                }
-            }
-
-        return index
-}
 
 
 }

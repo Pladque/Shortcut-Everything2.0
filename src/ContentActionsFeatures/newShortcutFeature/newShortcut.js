@@ -1,3 +1,5 @@
+import { ShortcutFinder } from "../../common/ShortcutFinder";
+
 const {CREATE_NEW_SHOWRTCUT_MSG, REQUEST_SEPARATOR} = require("../../common/PopupAndContentCommunication/Orders")
 const {readActivator} = require("../common/ReadActivator")
 const {HtmlElementParser} = require("../common/HtmlElementParser")
@@ -72,7 +74,7 @@ export class NewShortcutFeature{
             }else{
                 let shortcutrsArr = presentShortcuts["data"]
                 
-                let indexOfShortcut = this._getIndexOfShortcut(shortcutrsArr, shortcut)
+                let indexOfShortcut = new ShortcutFinder().findShortcut(shortcutrsArr, shortcut)
                 
                 if(indexOfShortcut === -1){  // add new shortcut
                     shortcutrsArr.push(shortcutInfoObj) 
@@ -89,23 +91,9 @@ export class NewShortcutFeature{
                     console.log(e);
                 });
 
-            // alert("current shortcuts: " + JSON.stringify(presentShortcutsDEBUG))
-
             shortcut = "";
         }, true)
 
-    }
-
-    _getIndexOfShortcut(shortcutrsArr, shortcut){
-        let index = -1;
-        for(let i =0; i< shortcutrsArr.length; i++){
-            if(shortcutrsArr[i]["shortcut"] === shortcut){
-            index = i;
-            break;
-            }
-        }
-
-        return index
     }
 
 

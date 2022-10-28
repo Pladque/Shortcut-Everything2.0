@@ -1,3 +1,5 @@
+import { ShortcutFinder } from "../../common/ShortcutFinder";
+
 const {REQUEST_SEPARATOR} = require("../../common/PopupAndContentCommunication/Orders")
 const {readActivator} = require("../common/ReadActivator")
 const {HtmlElementParser} = require("../common/HtmlElementParser")
@@ -56,9 +58,9 @@ export class ImproveShortcutFeature{
             }else{
                 let shortcutrsArr = presentShortcuts["data"]
                 
-                let indexOfShortcut = this._getIndexOfShortcut(shortcutrsArr, shortcut)
+                let indexOfShortcut = new ShortcutFinder().findShortcut(shortcutrsArr, shortcut)
                 
-                if(indexOfShortcut === -1){  // coudn find such a shortcut
+                if(indexOfShortcut === -1){  // coudnt find such a shortcut
                     
                     alert("Something went wrong coudnt find shortcut: " + this.shortcutMem)
                     
@@ -98,17 +100,6 @@ export class ImproveShortcutFeature{
 
     }
 
-    _getIndexOfShortcut(shortcutrsArr, shortcut){
-        let index = -1;
-        for(let i =0; i< shortcutrsArr.length; i++){
-            if(shortcutrsArr[i]["shortcut"] === shortcut){
-            index = i;
-            break;
-            }
-        }
-
-        return index
-    }
 
 
 }
