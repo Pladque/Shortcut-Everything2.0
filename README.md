@@ -23,12 +23,19 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 ## How to run
 
-Run in folder that constains manifest.json
+1. Run in folder that constains manifest.json
+
 `npm run build`
-Then, Go to
+
+2. Then, Go to
 
 - edge://extensions/ (if using Edge)
 - Or simply open extensions panel
+
+3. Turn on 'Developer Mode'
+
+4. click 'load unpacked' and chose folder with manifest.json
+
 
 ## Usefull links
 
