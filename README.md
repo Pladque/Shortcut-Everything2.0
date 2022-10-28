@@ -2,7 +2,7 @@
 
 ### Design patterns used (for university purpose)
 
-#1 Singleton #2 Factory #3 Decorator #4 State #5 Strategy #6Iterator
+#1 Singleton #2 Factory #3 Decorator #4 State #5 Strategy #6 Iterator
 
 ## Requirements
 
