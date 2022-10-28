@@ -12,9 +12,13 @@
 
 ### Requirements Instalation
 
-`````npm install webpack webpack-cli
+```
+npm install webpack webpack-cli
 npm install --save-dev babel-loader @babel/core @babel/preset-env`
-npm install --save-dev @babel/plugin-proposal-decorators ````
+npm install --save-dev @babel/plugin-proposal-decorators
+
+
+```
 
 ## How to run
 
@@ -29,5 +33,3 @@ Then, Go to
 
 [how to setup babel](https://www.youtube.com/watch?v=MX13Ezfzuf8)
 [how to setup webpack](https://www.youtube.com/watch?v=HNb6bapmsyI)
-
-`````
