@@ -22,10 +22,4 @@ module.exports = {
         ],
 
     },
-    // plugins: [
-    //     ["@babel/plugin-proposal-decorators", { "version": "legacy" }],
-    // ]
 }
-
-// npm install --save-dev @babel/plugin-proposal-decorators
-// install babel - https://www.youtube.com/watch?v=MX13Ezfzuf8
