@@ -17,7 +17,7 @@
 
 ```
 npm install webpack webpack-cli
-npm install --save-dev babel-loader @babel/core @babel/preset-env`
+npm install --save-dev babel-loader @babel/core @babel/preset-env
 npm install --save-dev @babel/plugin-proposal-decorators
 ```
 
