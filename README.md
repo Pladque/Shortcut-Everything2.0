@@ -34,10 +34,10 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 3. Turn on 'Developer Mode'
 
-4. click 'load unpacked' and chose folder with manifest.json
+4. Click 'load unpacked' and chose folder with manifest.json
 
 
-## Usefull links
+## Useful links
 
 [how to setup babel](https://www.youtube.com/watch?v=MX13Ezfzuf8)
 
