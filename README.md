@@ -25,7 +25,9 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 1. Run in folder that constains manifest.json
 
-`npm run build`
+```
+npm run build
+```
 
 2. Then, Go to
 
