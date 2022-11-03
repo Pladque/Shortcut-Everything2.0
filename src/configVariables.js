@@ -13,6 +13,7 @@ const SEARCH_FULL = true
 
 const autoCheckInnerTextChange = true;
 
+
 export{
     ATTRIBIUTES_TO_SKIP,
     NOT_WORKING_TAGS,
