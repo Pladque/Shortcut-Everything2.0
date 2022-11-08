@@ -8,9 +8,6 @@ export class UpdateShortcutDescription{
         this.handler = handler
     }
 
-    setSite(site){
-        this.site = site;
-    }
 
     // Required fields in data: site, desc, shortcut
     // site - current side identyfier

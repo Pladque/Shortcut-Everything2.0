@@ -8,10 +8,6 @@ export class ChangeShortcutIndex{
         this.handler = handler
     }
 
-    setSite(site){
-        this.site = site;
-    }
-
     // Required fields in data: site, ind, shortcut
     // site - current side identyfier
     // ind - new Index of element

@@ -10,10 +10,6 @@ export class DeleteShortcut{
         this.handler = handler
     }
 
-    setSite(site){
-        this.site = site;
-    }
-
     // Required fields in data: site, shortcut
     // site - current side identyfier
     // shortcut - ex. alt-p

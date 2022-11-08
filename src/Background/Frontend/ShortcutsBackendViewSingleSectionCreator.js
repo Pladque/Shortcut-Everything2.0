@@ -25,13 +25,12 @@ export class ShortcutBackendViewSingleSectionCreator{
         desbInputField.setAttribute("type", "text");
         desbInputField.setAttribute("value", data.shortcutData.desc);        
         desbInputField.setAttribute("style", "width: 40%;");
-        desbInputField.setAttribute("id", "shortcut desc " + data.shortcutData.shortcut);
+        desbInputField.setAttribute("id", "shortcut desc " + data.shortcutData.shortcut + ";" + data.site);
         
         let descSubmitButton = document.createElement("BUTTON");
         descSubmitButton.innerText = "change desc"
         descSubmitButton.setAttribute("class", "change desc button");
         descSubmitButton.setAttribute("value", data.shortcutData.shortcut)
-        
         
         let deleteButton = document.createElement("BUTTON");
         deleteButton.innerText = "delete"
@@ -53,7 +52,7 @@ export class ShortcutBackendViewSingleSectionCreator{
         let innerTextInputField = document.createElement("INPUT");
         innerTextInputField.setAttribute("value", data.shortcutData.attributes.others.innerText || "");
         innerTextInputField.setAttribute("type", "text");
-        innerTextInputField.setAttribute("id", "innerText "+ data.shortcutData.shortcut);
+        innerTextInputField.setAttribute("id", "innerText "+ data.shortcutData.shortcut+ ";" + data.site);
 
         let updateInnerTextButton = document.createElement("BUTTON");
         updateInnerTextButton.innerText = "update inner text"
@@ -63,7 +62,7 @@ export class ShortcutBackendViewSingleSectionCreator{
         let amountOfSkipableAttribiutes = document.createElement("INPUT");
         amountOfSkipableAttribiutes.setAttribute("value", data.shortcutData.options.maxAmonutOfAttribiutesToSkip || "0");
         amountOfSkipableAttribiutes.setAttribute("type", "text");
-        amountOfSkipableAttribiutes.setAttribute("id", "max skippable attribiutes "+ data.shortcutData.shortcut);
+        amountOfSkipableAttribiutes.setAttribute("id", "max skippable attribiutes "+ data.shortcutData.shortcut+ ";" + data.site);
 
         let updateSkipableAttribiutesAmountButton = document.createElement("BUTTON");
         updateSkipableAttribiutesAmountButton.innerText = "update skippable attrs amount"
@@ -91,19 +90,20 @@ export class ShortcutBackendViewSingleSectionCreator{
             const currState = enableButton.getAttribute("shortcut-enabled");
 
             let enableDisableShortcut = featuresFactory.createSingleShortcutEnablerFeature()
-            enableDisableShortcut.setSite(data.site);
 
             if(currState === "true"){
                 enableDisableShortcut.onClickAction({
                     shortcut: data.shortcutData.shortcut,
-                    newState: false
+                    newState: false,
+                    site: data.site
                 })
                 enableButton.setAttribute("shortcut-enabled", "false");
                 enableButton.innerText = "on"
             }else{
                 enableDisableShortcut.onClickAction({
                     shortcut: data.shortcutData.shortcut,
-                    newState: true
+                    newState: true,
+                     site: data.site
                 })
                 enableButton.setAttribute("shortcut-enabled", "true");
                 enableButton.innerText = "off"
@@ -112,31 +112,29 @@ export class ShortcutBackendViewSingleSectionCreator{
 
         deleteButton.addEventListener('click', async () => {
             let shortcutEraser = featuresFactory.createDeleteShortcutFeature();
-            shortcutEraser.setSite(data.site);
 
-            shortcutEraser.onClickAction( {shortcut: data.shortcutData.shortcut})
+            shortcutEraser.onClickAction( {shortcut: data.shortcutData.shortcut, site: data.site})
 
         }, false);
         
-            updateInnerTextButton.addEventListener('click', function() {
-                
-                const innerTextUpdater  = featuresFactory.createUpdateShortcutInnerTextFeature();
-                const newText =document.getElementById("innerText "+ data.shortcutData.shortcut).value
-                innerTextUpdater.onClickAction({
-                    shortcut: data.shortcutData.shortcut,
-                    newText: newText,
-                    site: data.site,
-                })
+        updateInnerTextButton.addEventListener('click', function() {
+            
+            const innerTextUpdater  = featuresFactory.createUpdateShortcutInnerTextFeature();
+            const newText =document.getElementById("innerText "+ data.shortcutData.shortcut + ";" + data.site).value
+            innerTextUpdater.onClickAction({
+                shortcut: data.shortcutData.shortcut,
+                newText: newText,
+                site: data.site,
+            })
 
-            }, false);
+        }, false);
 
 
         descSubmitButton.addEventListener('click', function() {
-            const descInputField = document.getElementById("shortcut desc " + data.shortcutData.shortcut)
+            const descInputField = document.getElementById("shortcut desc " + data.shortcutData.shortcut + ";" + data.site)
             
             const descUpdater = featuresFactory.createUpdateShortcutDescriptionFeature();
-            descUpdater.setSite(data.site);
-            descUpdater.onClickAction( {shortcut: data.shortcutData.shortcut, desc: descInputField.value } )
+            descUpdater.onClickAction( {shortcut: data.shortcutData.shortcut, desc: descInputField.value , site:data.site} )
         }, false);
 
         onOffInnerTextButton.addEventListener('click', function() {
@@ -162,7 +160,8 @@ export class ShortcutBackendViewSingleSectionCreator{
         }, false);
 
             updateSkipableAttribiutesAmountButton.addEventListener('click', function() {
-                const amountInput = document.getElementById("max skippable attribiutes "+ data.shortcutData.shortcut)
+                const amountInput = document.getElementById("max skippable attribiutes "+ data.shortcutData.shortcut+ ";" + data.site)
+
                 const skippableAttributesUpdater = featuresFactory.createUpdateShortcutSkippableAttrsFeature();
                 skippableAttributesUpdater.onClickAction({
                     shortcut: data.shortcutData.shortcut, 

@@ -35,9 +35,6 @@ class Storage {
     });
   }
 
-  printHello(){
-    alert("Hello")
-  }
 }
 
 const storageInstance = new Storage();

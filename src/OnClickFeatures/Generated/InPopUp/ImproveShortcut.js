@@ -8,8 +8,6 @@ export class ImproveShortcut{
         this.handler = handler
     }
 
-    setSite(site){}
-
     // Required fields in data: shortcut
     // shortcut - ex. alt-p
     async onClickAction(data){

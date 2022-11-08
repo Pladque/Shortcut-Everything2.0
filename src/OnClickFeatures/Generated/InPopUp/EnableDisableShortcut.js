@@ -8,9 +8,6 @@ export class EnableDisableShortcut{
         this.handler = handler
     }
 
-    setSite(site){
-        this.site = site;
-    }
 
     // Required fields in data: site, newState, shortcut
     // site - current side identyfier
