@@ -36,7 +36,7 @@ npm run build
 
 3. Turn on 'Developer Mode'
 
-4. Click 'load unpacked' and chose folder with manifest.json
+4. Click 'load unpacked' and choose folder with manifest.json
 
 
 ## Useful links
