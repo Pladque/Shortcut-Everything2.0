@@ -14,6 +14,7 @@
 npm install webpack webpack-cli
 npm install --save-dev babel-loader @babel/core @babel/preset-env
 npm install --save-dev @babel/plugin-proposal-decorators
+npm install --save-dev @babel/plugin-proposal-class-properties
 ```
 
 ## How to run
